@@ -1,0 +1,8 @@
+.container{
+    border: 1px solid black ;
+    margin: 10px;
+}
+.title{
+    width: 100%;
+    text-align:center;
+}
