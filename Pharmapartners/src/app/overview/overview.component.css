@@ -1,0 +1,13 @@
+.container{
+    border: 1px solid black ;
+    margin: 10px;
+}
+.date{
+    width: 100%;
+    text-align: right;
+    align-items: right;
+}
+.title{
+    width: 100%;
+    text-align:center;
+}
