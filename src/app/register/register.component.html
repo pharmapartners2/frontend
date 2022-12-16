@@ -3,6 +3,16 @@
     <div class="col-md-4">
       <form>
         <h5>Register</h5>
+        <!-- First Name input -->
+        <div class="form-outline mb-4">
+          <input type="firstName" id="form2Example1" class="form-control" />
+          <label class="form-label" for="form2Example1">Voornaam</label>
+        </div>
+        <!-- Last Name input -->
+        <div class="form-outline mb-4">
+          <input type="lastName" id="form2Example1" class="form-control" />
+          <label class="form-label" for="form2Example1">Achternaam</label>
+        </div>
         <!-- Email input -->
         <div class="form-outline mb-4">
           <input type="email" id="form2Example1" class="form-control" />
@@ -16,10 +26,13 @@
         </div>
 
         <!-- Submit button -->
-        <button class="btn btn-primary btn-block mb-4" [routerLink]="['/login']">
+        <button class="btn btn-primary btn-block mb-4" [routerLink]="['/']">
           Register
         </button>
       </form>
+      <div class="text-center">
+        <p>Already have an account? <a [routerLink]="['/login']">Log in</a></p>
+      </div>
     </div>
   </div>
 </div>
