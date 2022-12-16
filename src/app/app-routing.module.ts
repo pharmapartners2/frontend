@@ -19,6 +19,7 @@ const routes: Routes = [];
       { path: 'patientslist', component: PatientListComponent },
       { path: 'visitebrief/:patientId', component: VisiteBriefjeComponent },
       { path: 'register', component: RegisterComponent },
+      { path: 'login', component: LoginComponent },
     ])],
 
   exports: [RouterModule]
