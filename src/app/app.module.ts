@@ -10,8 +10,8 @@ import { OverviewComponent } from './overview/overview.component';
 import { LoginComponent } from './login/login.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RegisterComponent } from './register/register.component';
-import { NavbarComponent } from '../shared/navbar/navbar.component';
-import { FooterComponent } from '../shared/footer/footer.component';
+import { NavbarComponent } from './shared/navbar/navbar.component';
+import { FooterComponent } from './shared/footer/footer.component';
 
 
 @NgModule({
