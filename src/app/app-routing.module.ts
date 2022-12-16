@@ -6,6 +6,7 @@ import { OverviewComponent } from './overview/overview.component';
 import { PatientDetailComponent } from './patient-detail/patient-detail.component';
 import { PatientListComponent } from './patient-list/patient-list.component';
 import { VisiteBriefjeComponent } from './visite-briefje/visite-briefje.component';
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [];
 
@@ -16,7 +17,8 @@ const routes: Routes = [];
       { path: 'overview', component: OverviewComponent },
       { path: 'patient/:patientId', component: PatientDetailComponent },
       { path: 'patientslist', component: PatientListComponent },
-      { path: 'visitebrief/:patientId', component: VisiteBriefjeComponent }
+      { path: 'visitebrief/:patientId', component: VisiteBriefjeComponent },
+      { path: 'register', component: RegisterComponent },
     ])],
 
   exports: [RouterModule]

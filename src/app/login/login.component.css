@@ -1,11 +1,9 @@
 .container{
-    
-    border: 1px solid black;
     margin-top: 15vh;
     padding: 20px;
 }
 
 .row{
-    justify-content: center; 
+    justify-content: center;
 }
 
