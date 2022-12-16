@@ -28,11 +28,9 @@ app-navbar h1:hover {
     text-decoration: none;
 }
 
-
-
-
-
-
+.active-nav-item{
+    text-decoration: underline #cbe5fd;
+}
 
 /* Footer */
 app-footer{

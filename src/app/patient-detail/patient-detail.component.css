@@ -1,0 +1,28 @@
+.container{
+    border: 1px solid black ;
+    margin-top: 30px;
+}
+.title{
+    width: 100%;
+    text-align:center;
+    margin-top: 25px;
+    margin-bottom: 50px;
+}
+.button-group{
+    width:100%;
+    display: flex;
+    justify-content: center;
+}
+.btn{
+    text-align: center;
+    width:150px;
+    background-color: #ed1e79;
+    border-color: #ed1e79;
+    border-radius: 10px;
+    margin: 5px;
+}
+
+.btn:hover, .btn:active{
+    background-color: #bd1f64;
+    border-color: #bd1f64;
+}
