@@ -13,3 +13,17 @@
     margin-top: 25px;
     margin-bottom: 50px;
 }
+.btn{
+  text-align: center;
+  background-color: #ed1e79;
+  border-color: #ed1e79;
+}
+
+.btn:hover, .btn:active{
+  background-color: #bd1f64;
+  border-color: #bd1f64;
+}
+a{
+  color: #ed1e79;
+  text-decoration-color: #ed1e79;
+}
