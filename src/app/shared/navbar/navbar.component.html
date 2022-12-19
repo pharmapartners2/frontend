@@ -1,15 +1,16 @@
-<a>
-  <h1 [routerLink]="['/']">Home</h1>
-</a>
-
-<a>
-  <h1 routerLinkActive="active-nav-item" [routerLink]="['/overview']">
-    Overzicht
-  </h1>
-</a>
-
-<a>
-  <h1 routerLinkActive="active-nav-item" [routerLink]="['/patientslist']">
+  <a>
+    <h1 [routerLink]="['/']">Overzicht</h1>
+  </a>
+  <a>
+    <h1 [routerLink]="['/patientslist']">
     Patiëntenlijst
   </h1>
 </a>
+<div class="navlogin">
+  <a>
+    <h1 [routerLink]="['/login']">
+      <i class="fa fa-fw fa-user"> </i>
+      Login
+    </h1>
+  </a>
+</div>

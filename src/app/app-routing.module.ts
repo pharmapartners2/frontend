@@ -13,8 +13,7 @@ const routes: Routes = [];
 @NgModule({
   imports: [
     RouterModule.forRoot([
-      { path: '', component: LoginComponent },
-      { path: 'overview', component: OverviewComponent },
+      { path: '', component: OverviewComponent },
       { path: 'patient/:patientId', component: PatientDetailComponent },
       { path: 'patientslist', component: PatientListComponent },
       { path: 'visitebriefje/:patientId', component: VisiteBriefjeComponent },

@@ -1,8 +1,3 @@
-html{
-}
-
-body{
-}
 
 /* Navbar */
 app-navbar{
@@ -30,6 +25,12 @@ app-navbar h1:hover {
 
 .active-nav-item{
     text-decoration: underline #cbe5fd;
+}
+.navlogin{
+  display: flex;
+  width: 100%;
+  justify-content: right;
+  margin-right: 60px;
 }
 
 /* Footer */
