@@ -5,6 +5,18 @@
 .title{
     width: 100%;
     text-align: left;
-    margin-top: 25px;
+    margin-top: 5px;
     margin-bottom: 20px;
+}
+h1{
+    font-size: 30px;
+}
+h2{
+    font-size: 28px;
+}
+h5{
+    font-size: 16px;
+}
+.fa{
+    color: #ed1e79;
 }
