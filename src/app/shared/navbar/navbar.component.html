@@ -1,16 +1,14 @@
-  <a>
-    <h1 [routerLink]="['/']">Overzicht</h1>
-  </a>
-  <a>
-    <h1 [routerLink]="['/patientslist']">
-    Patiëntenlijst
+<a [routerLink]="['/']">
+  <h1>Overzicht</h1>
+</a>
+|
+<a [routerLink]="['/patientslist']">
+  <h1>Patiëntenlijst</h1>
+</a>
+|
+<a [routerLink]="['/login']">
+  <h1>
+    <i class="fa fa-fw fa-user"> </i>
+    Login
   </h1>
 </a>
-<div class="navlogin">
-  <a>
-    <h1 [routerLink]="['/login']">
-      <i class="fa fa-fw fa-user"> </i>
-      Login
-    </h1>
-  </a>
-</div>
