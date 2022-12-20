@@ -1,6 +1,12 @@
 .container{
-    border: 1px solid black ;
+    border: 1px solid black;
     margin-top: 30px;
+}
+
+.container-body{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
 }
 .date{
     width: 100%;

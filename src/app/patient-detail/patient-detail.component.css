@@ -1,13 +1,3 @@
-.container{
-    border: 1px solid black ;
-    margin-top: 30px;
-}
-.title{
-    width: 100%;
-    text-align:center;
-    margin-top: 25px;
-    margin-bottom: 50px;
-}
 .button-group{
     width:100%;
     display: flex;
@@ -21,8 +11,35 @@
     border-radius: 10px;
     margin: 5px;
 }
-
+.row{
+  justify-content: center;
+}
+.info{
+  margin-left:20px;
+}
 .btn:hover, .btn:active{
     background-color: #bd1f64;
     border-color: #bd1f64;
+}
+.container{
+  border: 1px solid black ;
+  margin-top: 30px;
+}
+.title{
+  width: 100%;
+  text-align: center;
+  margin-top: 5px;
+  margin-bottom: 20px;
+}
+h1{
+  font-size: 30px;
+}
+h2{
+  font-size: 28px;
+}
+h5{
+  font-size: 16px;
+}
+.fa{
+  color: #ed1e79;
 }

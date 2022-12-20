@@ -24,10 +24,6 @@ app-navbar a:hover {
     text-decoration: none;
 }
 
-
-.active-nav-item{
-    text-decoration: underline #cbe5fd;
-}
 .navlogin{
   display: flex;
   width: 100%;
@@ -37,12 +33,13 @@ app-navbar a:hover {
 
 /* Footer */
 app-footer{
+    margin-top: 10px;
     width: 100%;
     height: 40px;
     background-color: #3d6c99;
     display: flex;
-    position: fixed;
-    bottom: 0px;
+    position: relative;
+    bottom: 0;
     flex-direction: row;
     justify-content: center;
     align-items: center;
@@ -57,4 +54,6 @@ app-footer a {
     color: black;
     text-decoration: none;
 }
-
+html, body {
+  height: 100vh;
+}
