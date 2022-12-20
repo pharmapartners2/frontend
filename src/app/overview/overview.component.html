@@ -1,50 +1,41 @@
 <div class="container">
-  <div class="title">
-    <h1>Overzicht</h1>
+  <div class="container-body">
+
+    <div class="title">
+      <h1>Overzicht</h1>
     <h5 class="date">van {{ currentDateTime }}</h5>
   </div>
   <table class="table">
     <thead>
       <tr>
-        <th scope="col">BSN</th>
         <th scope="col">Naam</th>
-        <th scope="col">Geb.Datum</th>
         <th scope="col">Adres</th>
-        <th scope="col">Telefoon</th>
         <th scope="col"></th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td>346926075</td>
         <td>Test Gebruiker</td>
-        <td>01-04-2000</td>
         <td>Marijkestraat 23, Putten</td>
-        <td>0645533762</td>
         <td><button class="btn btn-primary btn-block" [routerLink]="['/visitebriefje/patientId']">
           Visitebriefje
-      </button></td>
+        </button></td>
       </tr>
       <tr>
-        <td>346926075</td>
         <td>Test Gebruiker2</td>
-        <td>01-05-2000</td>
         <td>Bloemstraat 23, Putten</td>
-        <td>0645533762</td>
         <td><button class="btn btn-primary btn-block" [routerLink]="['/visitebriefje/patientId']">
           Visitebriefje
-      </button></td>
+        </button></td>
       </tr>
       <tr>
-        <td>346926075</td>
         <td>Test Gebruiker3</td>
-        <td>01-06-2000</td>
         <td>Singel 3, Houten</td>
-        <td>0645533762</td>
         <td><button class="btn btn-primary btn-block" [routerLink]="['/visitebriefje/patientId']">
           Visitebriefje
-      </button></td>
+        </button></td>
       </tr>
     </tbody>
   </table>
+</div>
 </div>
