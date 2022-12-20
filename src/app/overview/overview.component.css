@@ -17,6 +17,7 @@
   text-align: center;
   background-color: #ed1e79;
   border-color: #ed1e79;
+  margin: 0px;
 }
 
 .btn:hover, .btn:active{
@@ -26,4 +27,8 @@
 a{
   color: #ed1e79;
   text-decoration-color: #ed1e79;
+}
+tr {
+  vertical-align: middle;
+  line-height: 30px;
 }
