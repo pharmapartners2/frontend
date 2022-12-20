@@ -4,8 +4,8 @@
 }
 .date{
     width: 100%;
-    text-align: right;
-    align-items: right;
+    text-align: center;
+    color: rgb(77, 77, 77);
 }
 .title{
     width: 100%;

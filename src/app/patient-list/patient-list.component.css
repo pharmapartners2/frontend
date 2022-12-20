@@ -18,3 +18,8 @@
     background-color: #bd1f64;
     border-color: #bd1f64;
 }
+
+tr {
+  vertical-align: middle;
+  line-height: 30px;
+}
