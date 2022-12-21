@@ -10,7 +10,7 @@ app-navbar{
     align-items: center;
 }
 
-app-navbar a, h1 {
+app-navbar a, app-navbar h1 {
     font-size: 20px;
     text-decoration: none;
     vertical-align: middle;

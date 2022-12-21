@@ -1,18 +1,18 @@
 <div class="container">
   <div class="row">
     <div class="col-md-4">
-      <form>
+      <form [formGroup]="loginForm" >
         <h5>Login</h5>
         <!-- Email input -->
         <div class="form-outline mb-4">
-          <input type="email" id="form2Example1" class="form-control" />
-          <label class="form-label" for="form2Example1">Email address</label>
+          <input type="username" for="username" id="form2Example1" class="form-control" formControlName="username"/>
+          <label class="form-label" for="username">Username</label>
         </div>
 
         <!-- Password input -->
         <div class="form-outline mb-4">
-          <input type="password" id="form2Example2" class="form-control" />
-          <label class="form-label" for="form2Example2">Password</label>
+          <input type="password" for="password" id="form2Example2" class="form-control" formControlName="password" />
+          <label class="form-label" for="password">Password</label>
         </div>
 
         <!-- 2 column grid layout for inline styling -->
@@ -40,7 +40,7 @@
         </div>
 
         <!-- Submit button -->
-        <button type="button" class="btn btn-primary btn-block mb-4" [routerLink]="['/']">
+        <button type="button" class="btn btn-primary btn-block mb-4" (click)="LogIn()" [routerLink]="['/']">
           Sign in
         </button>
 
