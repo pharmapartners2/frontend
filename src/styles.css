@@ -15,7 +15,7 @@ app-navbar a, h1 {
     text-decoration: none;
     vertical-align: middle;
     cursor: pointer;
-    color: black;
+    color: white;
     margin: 5px;
 }
 
@@ -51,7 +51,7 @@ app-footer h1 {
 }
 
 app-footer a {
-    color: black;
+    color: white;
     text-decoration: none;
 }
 html, body {
