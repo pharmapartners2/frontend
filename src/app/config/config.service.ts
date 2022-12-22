@@ -5,8 +5,8 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ConfigService {
-  private loginUrl = 'http://localhost:8080/login';
-  private url = 'http://localhost:8080/Patient';
+  private lclhostPatientUrl = 'http://localhost:8080/Patient';
+  private onlinePatientUrl = 'https://pharmapartnersapi.azurewebsites.net/patient';
   localStorage: any;
 
   constructor(private http: HttpClient) {
@@ -19,10 +19,10 @@ export class ConfigService {
    }
 
    getPatients() {
-    return this.http.get(this.url, {headers: {'Authorization': `Bearer ${this.getToken()}`}});
+    return this.http.get(this.lclhostPatientUrl, {headers: {'Authorization': `Bearer ${this.getToken()}`}});
    }
    getPatient(id: number) {
-    return this.http.get(this.url + '/' + id, {headers: {'Authorization': `Bearer ${this.getToken()}`}});
+    return this.http.get(this.lclhostPatientUrl + '/' + id, {headers: {'Authorization': `Bearer ${this.getToken()}`}});
    }
 
 

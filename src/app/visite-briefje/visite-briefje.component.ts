@@ -17,7 +17,7 @@ export class VisiteBriefjeComponent implements OnInit {
   }
   ngOnInit(): void {
     const routeParams = this.route.snapshot.paramMap;
-    const idFromRoute = Number(routeParams.get('PatientId'));
+    const idFromRoute = Number(routeParams.get('patientId'));
 
     this.selectedPatient = this.service.getPatient(idFromRoute);
 

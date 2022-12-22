@@ -14,9 +14,9 @@ const routes: Routes = [];
   imports: [
     RouterModule.forRoot([
       { path: '', component: OverviewComponent },
-      { path: 'Patient/:PatientId', component: PatientDetailComponent },
+      { path: 'patient/:patientId', component: PatientDetailComponent },
       { path: 'patientslist', component: PatientListComponent },
-      { path: 'visitebriefje/:PatientId', component: VisiteBriefjeComponent },
+      { path: 'visitebriefje/:patientId', component: VisiteBriefjeComponent },
       { path: 'register', component: RegisterComponent },
       { path: 'login', component: LoginComponent },
     ])],

@@ -4,12 +4,14 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class AuthService {
+  private onlineLoginUrl = 'https://pharmapartnersapi.azurewebsites.net/login';
+  private lclhostUrl = 'http://localhost:8080/login';
 
   constructor(private http: HttpClient) {
 
   }
 
   login(username:string, password:string ) {
-     return this.http.post('http://localhost:8080/login', {username:username, password:password}, {responseType: 'text'});
+     return this.http.post(this.lclhostUrl, {username:username, password:password}, {responseType: 'text'});
   }
 }
