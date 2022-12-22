@@ -16,7 +16,7 @@ const routes: Routes = [];
       { path: '', component: OverviewComponent },
       { path: 'Patient/:PatientId', component: PatientDetailComponent },
       { path: 'patientslist', component: PatientListComponent },
-      { path: 'visitebriefje/:patientId', component: VisiteBriefjeComponent },
+      { path: 'visitebriefje/:PatientId', component: VisiteBriefjeComponent },
       { path: 'register', component: RegisterComponent },
       { path: 'login', component: LoginComponent },
     ])],

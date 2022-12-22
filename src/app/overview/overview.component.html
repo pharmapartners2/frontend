@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="container-body">
+  <div class="container-body" >
 
     <div class="title">
       <h1>Overzicht</h1>
@@ -14,24 +14,10 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>Test Gebruiker</td>
-        <td>Marijkestraat 23, Putten</td>
-        <td><button class="btn btn-primary btn-block" [routerLink]="['/visitebriefje/patientId']">
-          Visitebriefje
-        </button></td>
-      </tr>
-      <tr>
-        <td>Test Gebruiker2</td>
-        <td>Bloemstraat 23, Putten</td>
-        <td><button class="btn btn-primary btn-block" [routerLink]="['/visitebriefje/patientId']">
-          Visitebriefje
-        </button></td>
-      </tr>
-      <tr>
-        <td>Test Gebruiker3</td>
-        <td>Singel 3, Houten</td>
-        <td><button class="btn btn-primary btn-block" [routerLink]="['/visitebriefje/patientId']">
+      <tr *ngFor="let patient of patients">
+        <td>{{ patient.naam }}</td>
+        <td>{{ patient.adres }}</td>
+        <td><button class="btn btn-primary btn-block" [routerLink]="['/visitebriefje/', patient.id]">
           Visitebriefje
         </button></td>
       </tr>

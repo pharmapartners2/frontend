@@ -21,6 +21,7 @@ export class PatientDetailComponent implements OnInit {
 
     this.service.getPatient(idFromRoute)
     .subscribe(response => {
+      console.log(response);
       this.selectedPatient = response;
     });
 
