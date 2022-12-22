@@ -1,56 +1,66 @@
-<div class="container">
-    <div class="title">
-      <div *ngIf="selectedPatient">
-        <h1>Visite</h1>
-        <h5>Naam: {{ selectedPatient.naam }}</h5>
-        <h5>Adres: {{ selectedPatient.adres }}</h5>
-        <h5>Geb.datum: {{ selectedPatient.geboorteDatum }}</h5>
-        <h5>BSN: {{ selectedPatient.bsn }}</h5>
-        <h5>Tel.nr: {{ selectedPatient.telefoonNummer }}</h5>
-        <hr>
-        <h5>{{ currentDateTime }}</h5>
+<div class="m-2">
+  <div class="card text-center mb-2">
+    <div class="card-header">
+      {{ patient.naam }}
+    </div>
+    <div class="card-body">
+      <h5>Naam: {{ patient.naam }}</h5>
+      <h5>Adres: {{ patient.adres }}</h5>
+      <h5>Geb.datum: {{ patient.geboorteDatum }}</h5>
+      <h5>BSN: {{ patient.bsn }}</h5>
+      <h5>Tel.nr: {{ patient.telefoonNr}}</h5>
+    </div>
+  </div>
+  <div class="accordion" id="accordionExample">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingOne">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Medicatie
+        </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <div *ngFor="let medicationPrescription of medicationPrescriptions">
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title">{{ medicationPrescription.datum}}</div>
+                <div class="card-title">{{ medicationPrescription.beschrijving}}</div>
+              </div>
+              <div *ngIf="medicationPrescription.medications">
+                <div class="card-body">
+                  <div class="card-text">Bp: {{ medicationPrescription.medications.bp}}</div>
+                  <div class="card-text">Naam: {{ medicationPrescription.medications.bpNaam}}</div>
+                  <div class="card-text">Sterkte {{ medicationPrescription.medications.sterkteHv}} {{ medicationPrescription.medications.sterkteEh}}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="briefjebody">
-        <h2>
-            <i class="fa fa-chevron-down" aria-hidden="true"></i>
-            1. Klachten
-        </h2>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingTwo">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Accordion Item #2
+        </button>
+      </h2>
+      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+        </div>
+      </div>
     </div>
-    <hr>
-    <div class="briefjebody">
-        <h2>
-            <i class="fa fa-chevron-down" aria-hidden="true"></i>
-            2.
-        </h2>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingThree">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Accordion Item #3
+        </button>
+      </h2>
+      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+        </div>
+      </div>
     </div>
-    <hr>
-    <div class="briefjebody">
-        <h2>
-            <i class="fa fa-chevron-down" aria-hidden="true"></i>
-            3.
-        </h2>
-    </div>
-    <hr>
-    <div class="briefjebody">
-        <h2>
-            <i class="fa fa-chevron-down" aria-hidden="true"></i>
-            4.
-        </h2>
-    </div>
-    <hr>
-    <div class="briefjebody">
-        <h2>
-            <i class="fa fa-chevron-down" aria-hidden="true"></i>
-            5.
-        </h2>
-    </div>
-    <hr>
-    <div class="briefjebody">
-        <h2>
-            <i class="fa fa-chevron-down" aria-hidden="true"></i>
-            6.
-        </h2>
-    </div>
-    <hr>
   </div>
+</div>
