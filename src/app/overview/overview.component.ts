@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DatePipe } from '@angular/common';
-import { ConfigService } from '../config/config.service';
+import {PatientService} from "../services/patient.service";
+import {Patient} from "../models/patient.model";
 
 @Component({
   selector: 'app-overview',
@@ -9,15 +10,20 @@ import { ConfigService } from '../config/config.service';
 })
 export class OverviewComponent implements OnInit {
   currentDateTime: string | null;
-  patients: any;
+  private _patients: Patient[];
 
-  constructor(public datepipe: DatePipe, private service: ConfigService) {
+  constructor(public datepipe: DatePipe, private patientService: PatientService) {
     this.currentDateTime = this.datepipe.transform(new Date(), 'dd-MM-yyyy');
+    this._patients = Array<Patient>();
   }
 
   ngOnInit(): void {
-    this.service.getPatients().subscribe((response) => {
-      this.patients = response;
+    this.patientService.getPatients().subscribe((response) => {
+      this._patients = response;
     });
+  }
+
+  get patients(): Patient[] {
+    return this._patients;
   }
 }

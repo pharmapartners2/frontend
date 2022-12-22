@@ -4,7 +4,6 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class AuthService {
-  private onlineLoginUrl = 'https://pharmapartnersapi.azurewebsites.net/login';
   private lclhostUrl = 'http://localhost:8080/login';
 
   constructor(private http: HttpClient) {

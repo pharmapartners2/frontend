@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ConfigService } from '../config/config.service';
 import { FormControl, FormGroup } from '@angular/forms';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../services/auth.service';
+import {TokenService} from "../services/token.service";
 
 @Component({
   selector: 'app-login',
@@ -9,10 +9,9 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  loginForm: FormGroup | any; 
-  loginControl = new FormControl('');
+  loginForm: FormGroup | any;
 
-  constructor(private service: ConfigService, private authService: AuthService) { }
+  constructor(private authService: AuthService, private tokenService: TokenService) { }
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({
@@ -26,7 +25,7 @@ export class LoginComponent implements OnInit {
     .subscribe( response => {
       console.log("Login method called")
       console.log(response)
-      localStorage.setItem('token33', response.toString());
+      this.tokenService.set('jwt', response.toString());
       console.log(response);
     })
   }

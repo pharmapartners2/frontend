@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ConfigService } from '../config/config.service';
-
+import {PatientService} from "../services/patient.service";
+import {Patient} from "../models/patient.model";
 
 @Component({
   selector: 'app-patient-list',
@@ -9,15 +9,20 @@ import { ConfigService } from '../config/config.service';
 })
 
 export class PatientListComponent implements OnInit {
-  patients: any;
+  private _patients: Patient[];
 
-  constructor(private service: ConfigService) { }
+  constructor(private patientService : PatientService) {
+    this._patients = Array<Patient>();
+  }
 
   ngOnInit(): void {
-    this.service.getPatients()
+    this.patientService.getPatients()
     .subscribe(response => {
-      this.patients = response;
+      this._patients = response;
     });
-  
+  }
+
+  get patients(): Patient[] {
+    return this._patients;
   }
 }

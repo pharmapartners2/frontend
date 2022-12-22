@@ -14,6 +14,10 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import {AuthService} from "./services/auth.service";
+import {TokenService} from "./services/token.service";
+import {PatientService} from "./services/patient.service";
+import {MedicationService} from "./services/medication.service";
 
 
 @NgModule({
@@ -26,7 +30,7 @@ import { HttpClientModule } from '@angular/common/http';
     LoginComponent,
     RegisterComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,9 +38,10 @@ import { HttpClientModule } from '@angular/common/http';
     NgbModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+
   ],
-  providers: [DatePipe],
+  providers: [DatePipe, AuthService, TokenService, PatientService, MedicationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
