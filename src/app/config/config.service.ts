@@ -24,6 +24,5 @@ export class ConfigService {
    getPatient(id: number) {
     return this.http.get(this.lclhostPatientUrl + '/' + id, {headers: {'Authorization': `Bearer ${this.getToken()}`}});
    }
-
-
+  
 }
