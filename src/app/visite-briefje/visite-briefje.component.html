@@ -1,13 +1,15 @@
 <div class="container">
     <div class="title">
+      <div *ngIf="selectedPatient">
         <h1>Visite</h1>
-        <h5>Naam: @Patient</h5>
-        <h5>Adres: @Adres</h5>
-        <h5>Geb.datum: @Geb.datum</h5>
-        <h5>BSN: @BSN</h5>
-        <h5>Tel.nr: @Tel.nr</h5>
+        <h5>Naam: {{ selectedPatient.naam }}</h5>
+        <h5>Adres: {{ selectedPatient.adres }}</h5>
+        <h5>Geb.datum: {{ selectedPatient.geboorteDatum }}</h5>
+        <h5>BSN: {{ selectedPatient.bsn }}</h5>
+        <h5>Tel.nr: {{ selectedPatient.telefoonNummer }}</h5>
         <hr>
-        <h5>19-12-2022</h5>
+        <h5>{{ currentDateTime }}</h5>
+      </div>
     </div>
     <div class="briefjebody">
         <h2>
@@ -52,4 +54,3 @@
     </div>
     <hr>
   </div>
-  

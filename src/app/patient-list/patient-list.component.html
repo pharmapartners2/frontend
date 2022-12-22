@@ -11,24 +11,10 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Test Gebruiker</td>
-            <td>01-04-2000</td>
-            <td><button class="btn btn-primary" [routerLink]="['/patient/patientId']">
-              info
-            </button></td>
-          </tr>
-          <tr>
-            <td>Test Gebruiker2</td>
-            <td>01-05-2000</td>
-            <td><button class="btn btn-primary" [routerLink]="['/patient/patientId']">
-              info
-            </button></td>
-          </tr>
-          <tr>
-            <td>Test Gebruiker3</td>
-            <td>01-06-2000</td>
-            <td><button class="btn btn-primary " [routerLink]="['/patient/patientId']">
+          <tr *ngFor="let patient of patients">
+            <td>{{ patient.naam }}</td>
+            <td>{{ patient.geboorteDatum }}</td>
+            <td><button class="btn btn-primary" [title]="patient.id + ' details'" [routerLink]="['/patient', patient.id]">
               info
             </button></td>
           </tr>

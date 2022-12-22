@@ -1,22 +1,22 @@
-<div class="container">
+<div class="container" >
   <div class="row">
     <div class="col-md-4">
-      <div class="title">
-        <h1>Details van @Patient</h1>
+      <div class="title" *ngIf="selectedPatient">
+        <h1>Details van {{ selectedPatient.naam }}</h1>
       </div>
       <div class="info">
-        <h5>Naam: @Patient</h5>
-        <h5>Adres: @Adres</h5>
-        <h5>Geb.datum: @Geb.datum</h5>
-        <h5>BSN: @BSN</h5>
-        <h5>Tel.nr: @Tel.nr</h5>
+        <h5>Naam: {{ selectedPatient.naam }} </h5>
+        <h5>Adres: {{ selectedPatient.adres }} </h5>
+        <h5>Geb.datum: {{ selectedPatient.geboorteDatum }}</h5>
+        <h5>BSN: {{ selectedPatient.bsn }} </h5>
+        <h5>Tel.nr: {{ selectedPatient.telefoonNummer }} </h5>
       </div>
       <hr>
     <div class="button-group">
       <button class="btn btn-primary btn-block mb-4" [routerLink]="['/']">
         Aanpassen
       </button>
-      <button class="btn btn-primary btn-block mb-4" [routerLink]="['/visitebriefje/patientId']">
+      <button class="btn btn-primary btn-block mb-4" [routerLink]="['/visitebriefje', selectedPatient.id]">
         Visitebriefje
       </button>
     </div>
