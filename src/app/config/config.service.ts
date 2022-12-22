@@ -21,6 +21,9 @@ export class ConfigService {
    getPatients() {
     return this.http.get(this.url, {headers: {'Authorization': `Bearer ${this.getToken()}`}});
    }
+   getPatient(id: number) {
+    return this.http.get(this.url + '/' + id, {headers: {'Authorization': `Bearer ${this.getToken()}`}});
+   }
 
 
 }

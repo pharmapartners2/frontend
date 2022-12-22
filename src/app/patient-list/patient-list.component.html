@@ -11,15 +11,13 @@
           </tr>
         </thead>
         <tbody>
-          <div *ngFor="let patient of patients">
-          <tr>
+          <tr *ngFor="let patient of patients">
             <td>{{ patient.naam }}</td>
             <td>{{ patient.geboorteDatum }}</td>
-            <td><button class="btn btn-primary" [routerLink]="['/patient/patientId']">
+            <td><button class="btn btn-primary" [title]="patient.id + ' details'" [routerLink]="['/Patient', patient.id]">
               info
             </button></td>
           </tr>
-        </div>
         </tbody>
       </table>
 </div>
