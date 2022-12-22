@@ -10,6 +10,6 @@ export class AuthService {
   }
 
   login(username:string, password:string ) {
-     return this.http.post('http://localhost:8080/login', {username:username, password:password});
-  }  
+     return this.http.post('http://localhost:8080/login', {username:username, password:password}, {responseType: 'text'});
+  }
 }

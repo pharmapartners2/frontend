@@ -7,14 +7,20 @@ import { HttpClient } from '@angular/common/http';
 export class ConfigService {
   private loginUrl = 'http://localhost:8080/login';
   private url = 'http://localhost:8080/Patient';
+  localStorage: any;
 
   constructor(private http: HttpClient) {
-    
+
+   }
+
+   getToken(): any {
+    const token = localStorage.getItem('token33');
+    return token;
    }
 
    getPatients() {
-    return this.http.get(this.url)
+    return this.http.get(this.url, {headers: {'Authorization': `Bearer ${this.getToken()}`}});
    }
 
-    
+
 }
