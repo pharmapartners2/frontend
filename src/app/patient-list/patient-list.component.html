@@ -13,7 +13,7 @@
         <tbody>
           <tr *ngFor="let patient of patients">
             <td>{{ patient.naam }}</td>
-            <td>{{ patient.geboorteDatum }}</td>
+            <td>{{patient.geboorteDatum | date}}</td>
             <td><button class="btn btn-primary" [title]="patient.id + ' details'" [routerLink]="['/patient', patient.id]">
               info
             </button></td>
