@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import {TokenService} from "../services/token.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,7 @@ import {TokenService} from "../services/token.service";
 export class LoginComponent implements OnInit {
   loginForm: FormGroup | any;
 
-  constructor(private authService: AuthService, private tokenService: TokenService) { }
+  constructor(private authService: AuthService, private tokenService: TokenService, private router: Router) { }
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({
@@ -27,6 +28,7 @@ export class LoginComponent implements OnInit {
       console.log(response)
       this.tokenService.set('jwt', response.toString());
       console.log(response);
+      this.router.navigate(['/'])
     })
   }
 }

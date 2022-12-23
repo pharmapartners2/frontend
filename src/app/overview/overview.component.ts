@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , OnChanges} from '@angular/core';
 import { DatePipe } from '@angular/common';
 import {PatientService} from "../services/patient.service";
 import {Patient} from "../models/patient.model";
@@ -16,7 +16,6 @@ export class OverviewComponent implements OnInit {
     this.currentDateTime = this.datepipe.transform(new Date(), 'dd-MM-yyyy');
     this._patients = Array<Patient>();
   }
-
   ngOnInit(): void {
     this.patientService.getPatients().subscribe((response) => {
       this._patients = response;

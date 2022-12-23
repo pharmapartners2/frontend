@@ -10,4 +10,8 @@ export class TokenService {
   getToken(): any {
     return localStorage.getItem('jwt');
   }
+
+  deleteToken() {
+    localStorage.removeItem("jwt");
+  }
 }
