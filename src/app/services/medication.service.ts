@@ -5,7 +5,7 @@ import {MedicationPrescription} from "../models/medicationprescription.model";
 
 @Injectable()
 export class MedicationService {
-  private url = 'http://localhost:8080/';
+  private url = 'https://pharmapartnersapi.azurewebsites.net/';
 
   constructor(private http: HttpClient, private tokenService: TokenService) {
 

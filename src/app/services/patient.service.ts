@@ -7,7 +7,7 @@ import {Patient} from "../models/patient.model";
   providedIn: 'root'
 })
 export class PatientService {
-  private url = 'http://localhost:8080/';
+  private url = 'https://pharmapartnersapi.azurewebsites.net/';
 
   constructor(private http: HttpClient, private tokenService: TokenService) {
 
