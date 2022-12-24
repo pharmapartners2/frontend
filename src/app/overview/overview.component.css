@@ -1,26 +1,29 @@
-.container{
+.container {
   margin-top: 30px;
   height: 100%;
-  margin-top: 50px;
   display: inline;
 }
-.container-body{
+
+.container-body {
   height: 100%;
   flex-direction: column;
   margin-bottom: 40px;
 }
-.date{
-    width: 100%;
-    text-align: center;
-    color: rgb(77, 77, 77);
+
+.title {
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
-.title{
-    width: 100%;
-    text-align:center;
-    margin-top: 30px;
-    margin-bottom: 30px;
+
+.date {
+  width: 100%;
+  text-align: center;
+  color: rgb(77, 77, 77);
 }
-.btn{
+
+.btn {
   text-align: center;
   background-color: #ed1e79;
   border-color: #ed1e79;
@@ -29,24 +32,32 @@
   padding-right: 5px;
 }
 
-.btn:hover, .btn:active{
+.btn:hover,
+.btn:active {
   background-color: #bd1f64;
   border-color: #bd1f64;
 }
-h1{
+
+h1 {
   font-size: 30px;
 }
-a{
+
+a {
   color: #ed1e79;
   text-decoration-color: #ed1e79;
 }
-table{
+
+table {
   width: 80%;
   margin-left: auto;
   margin-right: auto;
 }
+
 tr {
   vertical-align: middle;
   line-height: 30px;
 }
-
+td{
+  padding: 5px;
+  margin: 0px;
+}

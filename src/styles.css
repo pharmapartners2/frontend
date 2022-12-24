@@ -1,37 +1,3 @@
-/* Navbar */
-app-navbar{
-    width: auto;
-    height: 60px;
-    background-color: #3d6c99;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    overflow: hidden;
-}
-
-app-navbar a, app-navbar h1 {
-    font-size: 20px;
-    text-decoration: none;
-    vertical-align: middle;
-    cursor: pointer;
-    color: white;
-    margin: 5px;
-}
-
-app-navbar a:hover {
-    opacity: 0.8;
-    text-decoration: none;
-}
-
-.navlogin{
-  display: flex;
-  width: 100%;
-  justify-content: right;
-  margin-right: 60px;
-}
-
 html{
   height: 100%;
   width: 100%;
