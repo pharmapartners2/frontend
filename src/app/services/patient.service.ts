@@ -7,16 +7,17 @@ import {Patient} from "../models/patient.model";
   providedIn: 'root'
 })
 export class PatientService {
-  private url = 'https://pharmapartnersapi.azurewebsites.net/';
+  private onlinehostUrl = 'https://pharmapartnersapi.azurewebsites.net/';
+  private lclhostUrl = 'http://localhost:8080/';
 
   constructor(private http: HttpClient, private tokenService: TokenService) {
 
   }
 
   getPatients() {
-    return this.http.get<Array<Patient>>(this.url + 'patient', {headers: {'Authorization': `Bearer ${this.tokenService.getToken()}`}});
+    return this.http.get<Array<Patient>>(this.onlinehostUrl + 'patient', {headers: {'Authorization': `Bearer ${this.tokenService.getToken()}`}});
   }
   getPatient(id: number) {
-    return this.http.get<Patient>(this.url + 'patient/' + id, {headers: {'Authorization': `Bearer ${this.tokenService.getToken()}`}});
+    return this.http.get<Patient>(this.onlinehostUrl + 'patient/' + id, {headers: {'Authorization': `Bearer ${this.tokenService.getToken()}`}});
   }
 }

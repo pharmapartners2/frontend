@@ -2,12 +2,13 @@
   <div class="container-body" >
 
     <div class="title">
-      <h1>Overzicht</h1>
+      <h1>Overzicht *Huisarts X*</h1>
     <h5 class="date">van {{ currentDateTime }}</h5>
   </div>
   <table class="table">
     <thead>
       <tr>
+        <th scope="col">Van - tot</th>
         <th scope="col">Naam</th>
         <th scope="col">Adres</th>
         <th scope="col"></th>
@@ -15,8 +16,9 @@
     </thead>
     <tbody>
       <tr *ngFor="let patient of patients">
+        <td><i class="fa fa-clock-o"></i> 10:00-10:45</td> <!--{{afspraak.tijd'}}-->
         <td>{{ patient.naam }}</td>
-        <td>{{ patient.adres }}</td>
+        <td>{{ patient.adres }}  4444 AA</td> <!--{{patient.postcode}}-->
         <td><button class="btn btn-primary btn-block" [routerLink]="['/visitebriefje/', patient.id]">
           Visitebriefje
         </button></td>

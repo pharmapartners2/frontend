@@ -1,22 +1,46 @@
-.container{
-    border: 1px solid black ;
+.container {
     margin-top: 30px;
+    height: 100%;
+    margin-top: 50px;
+    display: inline;
 }
-.title{
+
+.container-body {
+    height: 100%;
+    flex-direction: column;
+    margin-bottom: 80px;
+}
+
+.title {
     width: 100%;
     text-align: left;
     margin-top: 5px;
     margin-bottom: 20px;
 }
-h1{
+
+.card-header{
+    width: 100%;
+    background-color: #efefef;
+    font-size: 20px;
+    padding: 8px;
+    vertical-align: middle;
+    margin: 0px;
+}
+.card-title{
+    font-size: 19px;
+}
+h1 {
     font-size: 30px;
 }
-h2{
+
+h2 {
     font-size: 28px;
 }
-h5{
+
+h5 {
     font-size: 16px;
 }
-.fa{
+
+.fa {
     color: #ed1e79;
 }

@@ -8,6 +8,7 @@ app-navbar{
     justify-content: center;
     align-items: center;
     color: white;
+    overflow: hidden;
 }
 
 app-navbar a, app-navbar h1 {
@@ -31,6 +32,11 @@ app-navbar a:hover {
   margin-right: 60px;
 }
 
-html, body {
-  height: 100vh;
+html{
+  height: 100%;
+  width: 100%;
+}
+body{
+  height: 80%;
+  width: 100%;
 }

@@ -1,6 +1,8 @@
 .navbar {
   background-color: #3d6c99;
   max-height: 40px;
+  width: 100%;
+  overflow: hidden;
 }
 
 a {

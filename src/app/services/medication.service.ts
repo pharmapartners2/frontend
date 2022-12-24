@@ -5,13 +5,14 @@ import {MedicationPrescription} from "../models/medicationprescription.model";
 
 @Injectable()
 export class MedicationService {
-  private url = 'https://pharmapartnersapi.azurewebsites.net/';
+  private onlinehostUrl = 'https://pharmapartnersapi.azurewebsites.net/';
+  private lclhostUrl = 'http://localhost:8080/';
 
   constructor(private http: HttpClient, private tokenService: TokenService) {
 
   }
 
   getMedication(id: number) {
-    return this.http.get<Array<MedicationPrescription>>(this.url + 'medicationprescription/' + id, {headers: {'Authorization': `Bearer ${this.tokenService.getToken()}`}});
+    return this.http.get<Array<MedicationPrescription>>(this.onlinehostUrl + 'medicationprescription/' + id, {headers: {'Authorization': `Bearer ${this.tokenService.getToken()}`}});
   }
 }
