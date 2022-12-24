@@ -1,23 +1,25 @@
 <div class="container">
+  <div class="container-body">
     <div class="title">
-        <h1>Lijst van patiënten</h1>
+      <h1>Lijst van patiënten</h1>
     </div>
     <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">Naam</th>
-            <th scope="col">Geb.Datum</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let patient of patients">
-            <td>{{ patient.naam }}</td>
-            <td>{{patient.geboorteDatum | date}}</td>
-            <td><button class="btn btn-primary" [title]="patient.id + ' details'" [routerLink]="['/patient', patient.id]">
+      <thead>
+        <tr>
+          <th scope="col">Naam</th>
+          <th scope="col">Geb.Datum</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let patient of patients">
+          <td>{{ patient.naam }}</td>
+          <td>{{ patient.geboorteDatum | date }}</td>
+          <td><button class="btn btn-primary" [title]="patient.id + ' details'" [routerLink]="['/patient', patient.id]">
               info
             </button></td>
-          </tr>
-        </tbody>
-      </table>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

@@ -1,26 +1,27 @@
-<div class="container" >
-  <div class="row">
-    <div class="col-md-4">
-      <div class="title" *ngIf="patient">
-        <h1>Details van {{ patient.naam }}</h1>
+<div class="container">
+  <div class="container-body">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="title" *ngIf="patient">
+          <h1>Details van {{ patient.naam }}</h1>
+        </div>
+        <div class="info">
+          <h5>Naam: {{ patient.naam }} </h5>
+          <h5>Adres: {{ patient.adres }} </h5>
+          <h5>Geb.datum: {{ patient.geboorteDatum | date }}</h5>
+          <h5>BSN: {{ patient.bsn }} </h5>
+          <h5>Tel.nr: {{ patient.telefoonNr }} </h5>
+        </div>
+        <hr>
+        <div class="button-group">
+          <button class="btn btn-primary btn-block mb-4" [routerLink]="['/']">
+            Aanpassen
+          </button>
+          <button class="btn btn-primary btn-block mb-4" [routerLink]="['/visitebriefje', patient.id]">
+            Visitebriefje
+          </button>
+        </div>
       </div>
-      <div class="info">
-        <h5>Naam: {{ patient.naam }} </h5>
-        <h5>Adres: {{ patient.adres }} </h5>
-        <h5>Geb.datum: {{ patient.geboorteDatum }}</h5>
-        <h5>BSN: {{ patient.bsn }} </h5>
-        <h5>Tel.nr: {{ patient.telefoonNr }} </h5>
-      </div>
-      <hr>
-    <div class="button-group">
-      <button class="btn btn-primary btn-block mb-4" [routerLink]="['/']">
-        Aanpassen
-      </button>
-      <button class="btn btn-primary btn-block mb-4" [routerLink]="['/visitebriefje', patient.id]">
-        Visitebriefje
-      </button>
-    </div>
     </div>
   </div>
 </div>
-
