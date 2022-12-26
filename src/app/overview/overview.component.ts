@@ -14,7 +14,6 @@ export class OverviewComponent implements OnInit {
   currentDateTime: string | null;
   private _patients: Patient[];
 
-
   constructor(
     public datepipe: DatePipe,
     private patientService: PatientService,
