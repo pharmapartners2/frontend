@@ -7,6 +7,8 @@ import { Episode } from '../models/episode.model';
 import { EpisodeService } from '../services/episode.service';
 import { MedicationService } from "../services/medication.service";
 import { MedicationPrescription } from "../models/medicationprescription.model";
+import { PhysicalExam } from '../models/physicalExam.model';
+import { PhysicalExamService } from '../services/physicalExam.service';
 
 @Component({
   selector: 'app-visite-briefje',
@@ -16,6 +18,7 @@ import { MedicationPrescription } from "../models/medicationprescription.model";
 export class VisiteBriefjeComponent implements OnInit {
   private _patient: Patient;
   private _episode: Episode[];
+  private _physicalExam: PhysicalExam[];
   private _medicationPrescriptions: MedicationPrescription[];
   currentDateTime: string | null;
 
@@ -24,12 +27,11 @@ export class VisiteBriefjeComponent implements OnInit {
     private route: ActivatedRoute, 
     private datepipe: DatePipe, 
     private medicationService: MedicationService,
-    private episodeService: EpisodeService){
+    private episodeService: EpisodeService,
+    private physicalExamService: PhysicalExamService) {
       this.currentDateTime = this.datepipe.transform(new Date(), 'dd-MM-yyyy');
-      this._medicationPrescriptions = Array<MedicationPrescription>();
-
-
   }
+
   ngOnInit(): void {
     const routeParams = this.route.snapshot.paramMap;
     const idFromRoute = Number(routeParams.get('patientId'));
@@ -49,7 +51,13 @@ export class VisiteBriefjeComponent implements OnInit {
     this.episodeService.getEpisode(idFromRoute)
       .subscribe(response => {
         this._episode = response;
-        console.log(response[0]);
+        console.log(response);
+      });
+
+    this.physicalExamService.getPhysicalExam(idFromRoute)
+      .subscribe(response => {
+        this._physicalExam = response;
+        console.log(response);
       });
   }
 
@@ -63,6 +71,10 @@ export class VisiteBriefjeComponent implements OnInit {
 
   get episode(): Episode[] {
     return this._episode;
+  }
+
+  get physicalExam(): PhysicalExam[] {
+    return this._physicalExam;
   }
 
 }
