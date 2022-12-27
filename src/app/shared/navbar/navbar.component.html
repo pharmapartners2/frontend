@@ -1,16 +1,13 @@
 <div class="navbar">
   <div class="container-fluid">
     <div class="mx-auto">
-      <div>
-        <div *ngIf="ifToken; else showLogout">
-          <div>
+        <div class="navbar" *ngIf="ifToken; else showLogout">        
             <a [routerLink]="['/login']">
               <h1>
                 <i class="fa fa-fw fa-user"> </i>
                 Login
               </h1>
             </a>
-          </div>
         </div>
         <ng-template #showLogout>
           <div class="navbar">
@@ -32,5 +29,4 @@
         </ng-template>
       </div>
     </div>
-  </div>
 </div>

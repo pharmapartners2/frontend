@@ -1,24 +1,23 @@
 <div class="container">
   <div class="container-body">
     <div class="m-2">
-      <div class="card text-center mb-2">
-        
+      <div class="card text-center mb-2" *ngIf="patient">
+
         <div class="card-header">
           Visitebriefje van {{ patient.naam }}
-        
         </div>
-        
+
         <div class="card-body">
           <h5>Naam: {{ patient.naam }}</h5>
           <h5>Adres: {{ patient.adres }}</h5>
           <h5>Geb.datum: {{patient.geboorteDatum | date}}</h5>
           <h5>BSN: {{ patient.bsn }}</h5>
           <h5>Tel.nr: {{ patient.telefoonNr}}</h5>
-        
+
         </div>
       </div>
 
-      
+
       <div class="accordion" id="accordionExample">
 
         <div class="accordion-item">
@@ -31,11 +30,21 @@
           <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
             data-bs-parent="#accordionExample">
             <div class="accordion-body">
-              <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse
-              plugin adds the appropriate classes that we use to style each element. These classes control the overall
-              appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom
-              CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the
-              <code>.accordion-body</code>, though the transition does limit overflow.
+              <div>
+                <div class="card mb-2" *ngIf="episode">
+                  <div class="card-header">
+                    <div class="card-title"> {{ episode[0].datum | date }}</div>
+                    <div class="card-title">{{ episode[0].beschrijving }}</div>
+                  </div>
+                  <div>
+                    <div class="card-body">
+                      <div class="card-text">Id: {{ episode[0].icpcCode.id }} </div>
+                      <div class="card-text">Code: {{ episode[0].icpcCode.icpccode }} </div>
+                      <div class="card-text">Omschrijving: {{ episode[0].icpcCode.icpomschrijving }} </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -72,14 +81,14 @@
               <div *ngFor="let medicationPrescription of medicationPrescriptions">
                 <div class="card mb-2">
                   <div class="card-header">
-                    <div class="card-title">{{medicationPrescription.datum | date}}</div>
-                    <div class="card-title">{{ medicationPrescription.beschrijving}}</div>
+                    <div class="card-title">{{ medicationPrescription.datum | date }}</div>
+                    <div class="card-title">{{ medicationPrescription.beschrijving }}</div>
                   </div>
                   <div *ngIf="medicationPrescription.medications">
                     <div class="card-body">
-                      <div class="card-text">Bp: {{ medicationPrescription.medications.bp}}</div>
-                      <div class="card-text">Naam: {{ medicationPrescription.medications.bpNaam}}</div>
-                      <div class="card-text">Sterkte {{ medicationPrescription.medications.sterkteHv}} {{
+                      <div class="card-text">Bp: {{ medicationPrescription.medications.bp }}</div>
+                      <div class="card-text">Naam: {{ medicationPrescription.medications.bpNaam }}</div>
+                      <div class="card-text">Sterkte {{ medicationPrescription.medications.sterkteHv }} {{
                         medicationPrescription.medications.sterkteEh}}</div>
                     </div>
                   </div>
