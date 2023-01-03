@@ -39,25 +39,25 @@ export class VisiteBriefjeComponent implements OnInit {
     this.patientService.getPatient(idFromRoute)
     .subscribe(response => {
       this._patient = response;
-      console.log(response);
+      console.log("Patient: ", response)
     });
 
     this.medicationService.getMedication(idFromRoute)
       .subscribe(response => {
         this._medicationPrescriptions = response;
-        console.log(response);
+        console.log("Medicatie: ", response);
       });
 
     this.episodeService.getEpisode(idFromRoute)
       .subscribe(response => {
         this._episode = response;
-        console.log(response);
+        console.log("Episodes: ", response);
       });
 
     this.physicalExamService.getPhysicalExam(idFromRoute)
       .subscribe(response => {
         this._physicalExam = response;
-        console.log(response);
+        console.log("Lichamelijke onderzoeken: ", response);
       });
   }
 

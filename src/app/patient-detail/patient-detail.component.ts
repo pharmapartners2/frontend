@@ -21,6 +21,7 @@ export class PatientDetailComponent implements OnInit {
     this.patientService.getPatient(idFromRoute)
       .subscribe(response => {
         this._patient = response;
+        console.log("Gegevens van patient opgehaald: ", response)
       });
   }
 
