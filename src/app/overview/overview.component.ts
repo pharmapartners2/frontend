@@ -33,7 +33,7 @@ export class OverviewComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (this.tokenService.isValidToken()==false) {
+    if (!this.tokenService.isValidToken()) {
       this.authService.logout();
       this.router.navigate(['/login']);
     }
