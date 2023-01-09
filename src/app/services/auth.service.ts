@@ -16,4 +16,8 @@ export class AuthService {
      return this.http.post(this.onlinehostUrl, {username:username, password:password}, {responseType: 'text'});
   }
 
+  logout() {
+    localStorage.removeItem('jwt');
+  }
+
 }

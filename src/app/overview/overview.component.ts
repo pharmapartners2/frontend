@@ -3,6 +3,7 @@ import { DatePipe } from '@angular/common';
 import { PatientService } from "../services/patient.service";
 import { Patient } from "../models/patient.model";
 import { TokenService } from '../services/token.service';
+import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -18,13 +19,15 @@ export class OverviewComponent implements OnInit {
     public datepipe: DatePipe,
     private patientService: PatientService,
     private tokenService: TokenService,
-    private router: Router) {
+    private router: Router,
+    private authService: AuthService) {
       this.currentDateTime = this.datepipe.transform(new Date(), 'dd-MM-yyyy');
       this._patients = Array<Patient>();
   }
 
   ngOnInit(): void {
-    if (!this.tokenService.getToken()) {
+    if (!this.tokenService.getToken() && Error('Unauthorized')) {
+      this.authService.logout();
       this.router.navigate(['/login']);
     }
 

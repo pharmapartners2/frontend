@@ -34,7 +34,7 @@
               <div>
                 <div class="card mb-2" *ngFor="let episode of episode">
                   <div class="card-header">
-                    <div class="card-title"> {{ episode.datum | date }}</div>
+                    <div class="card-title">{{ episode.datum | date }}</div>
                     <div class="card-title">{{ episode.beschrijving }}</div>
                   </div>
                   <div>
@@ -60,11 +60,15 @@
           <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
             data-bs-parent="#accordionExample">
             <div class="accordion-body">
-              <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse
-              plugin adds the appropriate classes that we use to style each element. These classes control the overall
-              appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom
-              CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the
-              <code>.accordion-body</code>, though the transition does limit overflow.
+              <button class="btn btn-primary btn-block mb-4"><i class="fa fa-fw fa-plus"></i> Voeg journal toe </button>
+              <div *ngFor="let journal of journal">
+                <div class="card mb-2">
+                  <div class="card-header">
+                    <div class="card-title">{{ journal.datum | date }}</div>
+                    <div class="card-title">{{ journal.beschrijving }}</div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -135,13 +139,14 @@
           <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
             data-bs-parent="#accordionExample">
             <div class="accordion-body">
-              <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse
-              plugin adds the appropriate classes that we use to style each element. These classes control the overall
-              appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with
-              custom
-              CSS or overriding our default variables. It's also worth noting that just about any HTML can go within
-              the
-              <code>.accordion-body</code>, though the transition does limit overflow.
+              <button class="btn btn-primary btn-block mb-4"><i class="fa fa-fw fa-plus"></i> Voeg intolerantie toe </button>
+              <div *ngFor="let intolerantie of intolerantie">
+                <div class="card mb-2">
+                  <div class="card-header">
+                    <div class="card-title">{{ intolerantie.beschrijving }}</div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

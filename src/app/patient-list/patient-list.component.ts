@@ -19,6 +19,7 @@ export class PatientListComponent implements OnInit {
     this.patientService.getPatients()
     .subscribe(response => {
       this._patients = response;
+      console.log("Lijst met patienten opgehaald: ", response)
     });
   }
 
