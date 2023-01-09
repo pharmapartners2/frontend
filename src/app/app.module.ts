@@ -18,6 +18,7 @@ import {AuthService} from "./services/auth.service";
 import {TokenService} from "./services/token.service";
 import {PatientService} from "./services/patient.service";
 import {MedicationService} from "./services/medication.service";
+import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import {MedicationService} from "./services/medication.service";
     ReactiveFormsModule,
 
   ],
-  providers: [DatePipe, AuthService, TokenService, PatientService, MedicationService],
+  providers: [DatePipe, AuthService, TokenService, PatientService, MedicationService, { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
+    JwtHelperService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

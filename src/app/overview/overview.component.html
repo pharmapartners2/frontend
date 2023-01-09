@@ -1,7 +1,7 @@
 <div class="container">
   <div class="container-body">
-    <div class="title" *ngFor="let users of users">
-      <h1>Overzicht *Huisarts X*  {{ users.username }}</h1>
+    <div class="title" *ngFor="let user of users">
+      <h1>Overzicht *Huisarts X*  {{ user.username }}</h1>
       <h5 class="date">van {{ currentDateTime }}</h5>
     </div>
     <table class="table">

@@ -7,6 +7,8 @@ import { User } from "../models/user.model"
 import { TokenService } from '../services/token.service';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-overview',
@@ -31,7 +33,7 @@ export class OverviewComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (!this.tokenService.getToken() && Error('Unauthorized')) {
+    if (this.tokenService.isValidToken()==false) {
       this.authService.logout();
       this.router.navigate(['/login']);
     }
