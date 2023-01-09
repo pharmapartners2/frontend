@@ -2,6 +2,8 @@ import { Component, OnInit, OnChanges } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { PatientService } from "../services/patient.service";
 import { Patient } from "../models/patient.model";
+import { UserService } from "../services/user.service"
+import { User } from "../models/user.model"
 import { TokenService } from '../services/token.service';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
@@ -14,15 +16,18 @@ import { Router } from '@angular/router';
 export class OverviewComponent implements OnInit {
   currentDateTime: string | null;
   private _patients: Patient[];
+  private _users: User[];
 
   constructor(
     public datepipe: DatePipe,
     private patientService: PatientService,
+    private userService: UserService,
     private tokenService: TokenService,
     private router: Router,
     private authService: AuthService) {
       this.currentDateTime = this.datepipe.transform(new Date(), 'dd-MM-yyyy');
       this._patients = Array<Patient>();
+      this._users = Array<User>();
   }
 
   ngOnInit(): void {
@@ -33,11 +38,21 @@ export class OverviewComponent implements OnInit {
 
     this.patientService.getPatients().subscribe((response) => {
       this._patients = response;
+      console.log("Patienten opgehaald: ", response)
     });
+
+    this.userService.getUsers().subscribe((response) => {
+      this._users = response;
+      console.log("Users opgehaald: ", response)
+    })
   }
 
   get patients(): Patient[] {
     return this._patients;
+  }
+
+  get users(): User[] {
+    return this._users;
   }
 
 }
