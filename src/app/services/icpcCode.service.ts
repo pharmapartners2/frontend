@@ -19,6 +19,6 @@ export class IcpcCodeService {
     }
 
     getAllIcpcCodes() {
-        return this.http.get<icpcCode[]>(this.lclhostUrl + 'icpcCode/', { headers:{'Authorization': `Bearer ${this.tokenService.getToken()}`}});
+        return this.http.get<icpcCode[]>(this.lclhostUrl + 'icpcCode', { headers:{'Authorization': `Bearer ${this.tokenService.getToken()}`}});
     }
 }

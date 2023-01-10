@@ -18,10 +18,11 @@
                     <input type="text" for="beschrijving" class="form-control" formControlName="beschrijving">
                 </div>
 
-                <div class="form-outline mb-4">
-                    <label class="form-label" for="ipccode">Ipc code</label>
-                    <input type="text" for="ipccode" class="form-control" formControlName="ipccode">
-                </div>
+                <!-- dropdown -->
+                <select class="btn btn-outline-primary">
+                    <option value="default">----</option>
+                    <option *ngFor="let item of icpccodes">{{item.icpccode}}</option>
+                </select>
             </form>
             <button type="button" class="btn btn-primary btn-block mb-4">Register Episode</button>
         </div>

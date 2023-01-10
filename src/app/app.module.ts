@@ -20,7 +20,6 @@ import {PatientService} from "./services/patient.service";
 import {MedicationService} from "./services/medication.service";
 import { AddEpisodeComponent } from './episode/add-episode/add-episode.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
