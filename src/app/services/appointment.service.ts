@@ -5,7 +5,7 @@ import { Appointment } from "../models/appointment.model";
 @Injectable({
   providedIn: 'root'
 })
-export class PatientService {
+export class AppointmentService {
   private onlinehostUrl = 'https://pharmapartnersapi.azurewebsites.net/';
   private lclhostUrl = 'http://localhost:8080/';
 
@@ -14,7 +14,7 @@ export class PatientService {
   }
 
   getAppointments() {
-    return this.http.get<Array<Appointment>>(this.onlinehostUrl + 'appointment', {headers: {'Authorization': `Bearer ${this.tokenService.getToken()}`}});
+    return this.http.get<Array<Appointment>>(this.lclhostUrl + 'appointment', {headers: {'Authorization': `Bearer ${this.tokenService.getToken()}`}});
   }
   getAppointmentByUser(Id:number) {
     return this.http.get<Array<Appointment>>(this.onlinehostUrl + 'appointment/' + Id, {headers: {'Authorization': `Bearer ${this.tokenService.getToken()}`}});

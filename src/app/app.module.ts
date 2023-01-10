@@ -16,6 +16,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from "./services/auth.service";
 import { TokenService } from "./services/token.service";
+import { AppointmentService} from "./services/appointment.service"
 import { PatientService } from "./services/patient.service";
 import { MedicationService } from "./services/medication.service";
 import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';

@@ -2,35 +2,41 @@
   <div class="container-body">
     <div class="title">
       <h1>Overzicht van 
-        <select class="dropdown-users">
-        <option *ngFor="let user of users">{{ user.username }}</option>
+        <select class="dropdown-users selected">
+        <option *ngFor="let user of users" >{{ user.username }}</option>
       </select>
     </h1>
-      <h5 class="date">van {{ currentDateTime }} </h5>
+      <h5 class="date">van {{ DateSelected }} </h5>
+    </div>
+    <div>
+      Date Picker: <input type="date" [(ngModel)] = "DateSelected">
+    <button (click) = "FetchDateSelected()">
+      Fetch date
+    </button>
+    Selected date = {{DateSelected}}
     </div>
     <table class="table">
       <thead>
         <tr>
-          <th scope="col">Van - tot</th>
+          <th scope="col">Begint om</th>
           <th scope="col">Naam</th>
           <th scope="col">Adres</th>
           <th scope="col"></th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let patient of patients">
-          <td><i class="fa fa-clock-o"></i> 10:00-10:45</td>
-          <!--{{afspraak.tijd'}}-->
-          <td>{{ patient.naam }}</td>
-          <td>{{ patient.adres }} 4444 AA</td>
-          <!--{{patient.postcode}}-->
-          <td><button class="btn btn-primary btn-block" [routerLink]="['/visitebriefje/', patient.id]">
-              Visite
-            </button></td>
+        <tr *ngFor="let appointment of appointments">
+            <td><i class="fa fa-clock-o"></i> {{ appointment.datum | date:'HH:mm' }} </td>
+            <td> {{ appointment.patientModel.naam }} </td>
+            <td> {{ appointment.patientModel.adres }}  </td>
+            <td><button class="btn btn-primary btn-block" [routerLink]="['/visitebriefje/' , appointment.patientModel.id ]">
+                  Visite
+            </button>
+            </td>
         </tr>
-      </tbody>
+    </tbody>
+    
     </table>
   </div>
 </div>
-<!--Datum + Tijd-->
-<!--{{patient.geboorteDatum | date:'medium'}}-->
+
