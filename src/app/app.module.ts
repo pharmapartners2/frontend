@@ -18,6 +18,8 @@ import {AuthService} from "./services/auth.service";
 import {TokenService} from "./services/token.service";
 import {PatientService} from "./services/patient.service";
 import {MedicationService} from "./services/medication.service";
+import {AddJournaalModalComponent} from "./add-journaal-modal/add-journaal-modal.component";
+import { AddJournaalFormComponent } from './add-journaal-form/add-journaal-form.component';
 
 
 @NgModule({
@@ -31,6 +33,8 @@ import {MedicationService} from "./services/medication.service";
     RegisterComponent,
     NavbarComponent,
     FooterComponent,
+    AddJournaalModalComponent,
+    AddJournaalFormComponent,
   ],
   imports: [
     BrowserModule,
