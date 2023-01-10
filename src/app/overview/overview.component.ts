@@ -21,6 +21,7 @@ import { forkJoin } from 'rxjs';
 export class OverviewComponent implements OnInit {
   currentDateTime: string | null;
   private _appointments: Appointment[];
+  private _appointmentsFiltered: Appointment[];
   private _users: User[];
   private _patients: Patient[];
 
@@ -34,6 +35,7 @@ export class OverviewComponent implements OnInit {
     private patientService: PatientService) {
       this.currentDateTime = this.datepipe.transform(new Date(), 'dd-MM-yyyy');
       this._appointments = Array<Appointment>();
+      this._appointmentsFiltered = Array<Appointment>();
       this._users = Array<User>();
       this._patients = Array<Patient>();
   }
@@ -57,6 +59,7 @@ export class OverviewComponent implements OnInit {
       console.log("Users opgehaald: ", response)
     })
     this.DateSelected = this.datepipe.transform(new Date(), 'dd/MM/yyyy');
+    this._appointmentsFiltered = this._appointments.filter((appointment : Appointment) => appointment.datum == this.DateSelected);
   }
   DateSelected: any;
   FetchDateSelected(){
