@@ -18,6 +18,7 @@ import {AuthService} from "./services/auth.service";
 import {TokenService} from "./services/token.service";
 import {PatientService} from "./services/patient.service";
 import {MedicationService} from "./services/medication.service";
+import { AddEpisodeComponent } from './episode/add-episode/add-episode.component';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import {MedicationService} from "./services/medication.service";
     RegisterComponent,
     NavbarComponent,
     FooterComponent,
+    AddEpisodeComponent,
   ],
   imports: [
     BrowserModule,

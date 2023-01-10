@@ -15,9 +15,9 @@ export class PatientService {
   }
 
   getPatients() {
-    return this.http.get<Array<Patient>>(this.onlinehostUrl + 'patient', {headers: {'Authorization': `Bearer ${this.tokenService.getToken()}`}});
+    return this.http.get<Array<Patient>>(this.lclhostUrl + 'Patient', {headers: {'Authorization': `Bearer ${this.tokenService.getToken()}`}});
   }
   getPatient(id: number) {
-    return this.http.get<Patient>(this.onlinehostUrl + 'patient/' + id, {headers: {'Authorization': `Bearer ${this.tokenService.getToken()}`}});
+    return this.http.get<Patient>(this.lclhostUrl + 'Patient/' + id, {headers: {'Authorization': `Bearer ${this.tokenService.getToken()}`}});
   }
 }

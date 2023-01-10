@@ -7,6 +7,7 @@ import { PatientDetailComponent } from './patient-detail/patient-detail.componen
 import { PatientListComponent } from './patient-list/patient-list.component';
 import { VisiteBriefjeComponent } from './visite-briefje/visite-briefje.component';
 import { RegisterComponent } from './register/register.component';
+import { AddEpisodeComponent } from './episode/add-episode/add-episode.component';
 
 const routes: Routes = [];
 
@@ -19,6 +20,7 @@ const routes: Routes = [];
       { path: 'visitebriefje/:patientId', component: VisiteBriefjeComponent },
       { path: 'register', component: RegisterComponent },
       { path: 'login', component: LoginComponent },
+      { path: 'episode', component: AddEpisodeComponent}
     ])],
 
   exports: [RouterModule]
