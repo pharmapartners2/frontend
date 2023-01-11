@@ -24,6 +24,7 @@ export class OverviewComponent implements OnInit {
   private _appointmentsFiltered: Appointment[];
   private _users: User[];
   private _patients: Patient[];
+  _loggedInAs:any;
 
   constructor(
     public datepipe: DatePipe,
@@ -38,6 +39,7 @@ export class OverviewComponent implements OnInit {
       this._appointmentsFiltered = Array<Appointment>();
       this._users = Array<User>();
       this._patients = Array<Patient>();
+      this._loggedInAs = "";
   }
 
   ngOnInit(): void {
@@ -49,15 +51,21 @@ export class OverviewComponent implements OnInit {
       this._patients = response;
       console.log("Patiënten opgehaald: ", response)
     });
-    this.appointmentService.getAppointments().subscribe((response) => {
+    console.log("JSON object uit tokebn: ", this.tokenService.getIdfromToken());
+    this.appointmentService.getAppointmentByUser(this.tokenService.getIdfromToken()).subscribe((response) => {
       this._appointments = response;
-      console.log("Afspraken opgehaald: ", response)
+      console.log("Afspraken opgehaald: ", response, "met het id: ", this.tokenService.getIdfromToken())
     });
 
     this.userService.getUsers().subscribe((response) => {
       this._users = response;
       console.log("Users opgehaald: ", response)
     })
+
+    this._loggedInAs =  this.tokenService.getUsernamefromToken();
+    console.log("Kleine logger" , this._loggedInAs.username);
+
+    console.log("Logged in as: ", this._loggedInAs);
     this.DateSelected = this.datepipe.transform(new Date(), 'dd/MM/yyyy');
     this._appointmentsFiltered = this._appointments.filter((appointment : Appointment) => appointment.datum == this.DateSelected);
   }
@@ -71,7 +79,9 @@ export class OverviewComponent implements OnInit {
   get appointments(): Appointment[]{
     return this._appointments;
   }
-  
+  get loggedInas(): string{
+    return this._loggedInAs;
+  }
   get patients(): Patient[] {
     return this._patients;
   }
