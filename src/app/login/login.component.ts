@@ -33,21 +33,21 @@ export class LoginComponent implements OnInit {
     this.submitted = true;
 
     if (this.loginForm.invalid) {
-      return console.log("Ongeldige login", this.loginForm.value) //shows log with the values of the form
+      return console.log("Ongeldige login", this.loginForm.value); //shows log with the values of the form
     }
     this.authService.login(this.loginForm.value.username, this.loginForm.value.password)
       .subscribe(response => {
         console.log("Ingelogd door gebruiker: ", this.loginForm.value.username, response)
         this.tokenService.set('jwt', response.toString());
-        this.router.navigate(['/'])
+        this.router.navigate(['/']);
       },
         err => {
           if (err instanceof HttpErrorResponse) {
             if (err.status === 401) {
               err = "Gebruikersnaam of wachtwoord is onjuist";
-              console.log(err, this.loginForm.value)
+              console.log(err, this.loginForm.value);
             }
           }
-        })
+        });
   }
 }

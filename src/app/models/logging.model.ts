@@ -1,24 +1,18 @@
 export class Logging {
-    private _id: number;
-    private _patientId: number;
+    private _userId: number;
     private _datetime: string;
     private _logline: string;
 
 
-    constructor(id: number, patientId: number, logline: string, datetime: string, {
+    constructor(userId: number, logline: string, datetime: string, {
     }) {
-        this._id = id;
-        this._patientId = patientId;
+        this._userId = userId;
         this._logline = logline;
         this._datetime = datetime;
     }
 
-    get id(): number {
-        return this._id;
-    }
-
-    get patientId(): number {
-        return this._patientId;
+    get userId(): number {
+        return this._userId;
     }
 
     get logline(): string {
@@ -29,12 +23,8 @@ export class Logging {
         return this._datetime;
     }
 
-    set id(value: number) {
-        this._id = value;
-    }
-
-    set patientId(value: number) {
-        this._patientId = value;
+    set userId(value: number) {
+        this._userId = value;
     }
 
     set logline(value: string) {

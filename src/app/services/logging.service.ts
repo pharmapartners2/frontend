@@ -15,6 +15,6 @@ export class LoggingService {
     }
 
     registerLogging(log: Logging) {
-        return this.http.post<Logging[]>(this.lclhostUrl + 'logging/', log, { headers: { 'Authorization': `Bearer ${this.tokenService.getToken()}` } });
+        return this.http.post<Logging>(this.lclhostUrl + 'logging', log, { headers: { 'Authorization': `Bearer ${this.tokenService.getToken()}` } });
     }
 }
