@@ -15,6 +15,6 @@ export class IntolerantieService {
     }
 
     getIntolerantie(id: number) {
-        return this.http.get<Intolerantie[]>(this.lclhostUrl + 'intolerantie/' + id, { headers: { 'Authorization': `Bearer ${this.tokenService.getToken()}` } });
+        return this.http.get<Intolerantie[]>(this.onlinehostUrl + 'intolerantie/' + id, { headers: { 'Authorization': `Bearer ${this.tokenService.getToken()}` } });
     }
 }
