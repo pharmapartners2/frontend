@@ -5,7 +5,7 @@ import { Appointment } from "../models/appointment.model";
 @Injectable({
   providedIn: 'root'
 })
-export class PatientService {
+export class AppointmentService {
   private onlinehostUrl = 'https://pharmapartnersapi.azurewebsites.net/';
   private lclhostUrl = 'http://localhost:8080/';
 
