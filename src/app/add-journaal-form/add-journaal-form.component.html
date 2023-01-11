@@ -1,0 +1,36 @@
+
+
+
+
+
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Voeg journaal toe</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="journaalForm">
+      <div class="mb-3">
+        <label class="form-label">Patient:</label>
+        <select class="form-select" formControlName="selectedPatientId">
+          <option def *ngIf = "patient" [ngValue]="patient.id"> {{patient.naam}} </option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Beschrijving:</label>
+        <input class="form-control" id="beschrijving" type="text" formControlName="beschrijving">
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Datum:</label>
+        <ngb-datepicker #dp [(ngModel)]="dp"></ngb-datepicker>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-primary" type="submit" [disabled]="!journaalForm.valid" (click)="open(submitForm())">Voeg journaal toe</button>
+  </div>
+</ng-template>
+<button class="btn btn-primary btn-block mb-4" (click)="open(content)"> Voeg journaal toe </button>
