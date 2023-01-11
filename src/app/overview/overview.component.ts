@@ -1,17 +1,14 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
-import { DatePipe } from '@angular/common';
-import { AppointmentService } from "../services/appointment.service";
-import { Patient } from "../models/patient.model";
-import { UserService } from "../services/user.service"
-import { User } from "../models/user.model"
-import { TokenService } from '../services/token.service';
-import { AuthService } from '../services/auth.service';
-import { Router } from '@angular/router';
-import { JwtHelperService } from '@auth0/angular-jwt';
-import { HttpHeaders } from '@angular/common/http';
-import { Appointment } from '../models/appointment.model';
-import { PatientService } from '../services/patient.service';
-import { forkJoin, skip } from 'rxjs';
+import {Component, OnInit, OnChanges, AfterViewInit} from '@angular/core';
+import {DatePipe} from '@angular/common';
+import {AppointmentService} from "../services/appointment.service";
+import {Patient} from "../models/patient.model";
+import {UserService} from "../services/user.service"
+import {User} from "../models/user.model"
+import {TokenService} from '../services/token.service';
+import {AuthService} from '../services/auth.service';
+import {Router} from '@angular/router';
+import {Appointment} from '../models/appointment.model';
+import {PatientService} from '../services/patient.service';
 
 @Component({
   selector: 'app-overview',
@@ -26,7 +23,7 @@ export class OverviewComponent implements OnInit {
   private _appointEmpty: Appointment[];
   private _users: User[];
   private _patients: Patient[];
-  _loggedInAs:any;
+  _loggedInAs: any;
 
   constructor(
     public datepipe: DatePipe,
@@ -36,13 +33,13 @@ export class OverviewComponent implements OnInit {
     private router: Router,
     private authService: AuthService,
     private patientService: PatientService) {
-      this.currentDateTime = this.datepipe.transform(new Date(), 'dd-MM-yyyy');
-      this._appointments = Array<Appointment>();
-      this._appointmentsFiltered = Array<Appointment>();
-      this._appointEmpty = Array<Appointment>();
-      this._users = Array<User>();
-      this._patients = Array<Patient>();
-      this._loggedInAs = "";
+    this.currentDateTime = this.datepipe.transform(new Date(), 'dd-MM-yyyy');
+    this._appointments = Array<Appointment>();
+    this._appointmentsFiltered = Array<Appointment>();
+    this._appointEmpty = Array<Appointment>();
+    this._users = Array<User>();
+    this._patients = Array<Patient>();
+    this._loggedInAs = "";
   }
 
   ngOnInit(): void {
@@ -65,58 +62,52 @@ export class OverviewComponent implements OnInit {
       console.log("Users opgehaald: ", response)
     })
 
-    this._loggedInAs =  this.tokenService.getUsernamefromToken();
+    this._loggedInAs = this.tokenService.getUsernamefromToken();
 
     console.log("Logged in as: ", this._loggedInAs);
-    this.DateSelected = this.datepipe.transform(new Date(), 'dd/MM/yyyy');
 
     this.isFiltered = false;
-    //this.DateSelected = this.datepipe.transform(new Date(), 'dd/MM/yyyy');
 
   }
-  DateSelected: any;
+
   isFiltered: boolean;
-  dateFilter(){
+
+  dateFilter() {
     this._appointmentsFiltered = [];
     this._appointments.forEach(appointment => {
-      let testDate = new Date(appointment.datum);
-      let todayDate2 = new Date(this.todayDate);
-      console.log(testDate.getDate() + " testDate")
-      if(testDate.getDate() == todayDate2.getDate()){
+      let AppointmentDate = new Date(appointment.datum);
+      let todayDate = new Date(this.todayDate);
+      if (AppointmentDate.getDate() == todayDate.getDate() && AppointmentDate.getMonth() == todayDate.getMonth() && AppointmentDate.getFullYear() == todayDate.getFullYear()) {
         this._appointmentsFiltered.push(appointment);
       }
     });
-  }
-  FetchDateSelected(){
-    /*if(!this.isFiltered){
-      this.dateFilter();
+    if (this._appointmentsFiltered.length > 0) {
       this.isFiltered = true;
-      console.log(this._appointmentsFiltered+ "Should be full")
-
+      console.log(this.isFiltered + " Deze hele lieve code zou TRUE moeten geven")
     } else {
-      if(this.DateSelected.isEmpty()){
-        this.DateSelected = this.datepipe.transform(new Date(), 'dd/MM/yyyy');
-      }
-      console.log(this.DateSelected + " date selected")
-      this.DateSelected = this.datepipe.transform(new Date(), 'dd/MM/yyyy');
-      console.log(this.DateSelected + " date selected")
-      this._appointmentsFiltered = new Array<Appointment>();
-      console.log(this._appointmentsFiltered+ "Should be empty")
-      this.dateFilter();
+      this._appointmentsFiltered = [];
       this.isFiltered = true;
-      console.log(this._appointmentsFiltered+ "Should be filled")
-    }*/
-    if(this.todayDate == null){
-      this._appointmentsFiltered = this._appointments;
-    } else {
-    this.dateFilter()
     }
   }
 
-  get appointments(): Appointment[]{
+  FetchDateSelected() {
+    if (this.todayDate == undefined || this.todayDate.toString() == '') {
+      console.log("Deze lieve code is undefined ---" + this.todayDate + "---")
+      this._appointmentsFiltered = this._appointments.map(a => {
+        return a
+      });
+      this.isFiltered = false;
+      console.log(this.isFiltered + " Deze hele lieve code zou false moeten geven")
+    } else {
+      this.dateFilter()
+    }
+  }
+
+  get appointments(): Appointment[] {
     return this._appointments;
   }
-  get loggedInas(): string{
+
+  get loggedInas(): string {
     return this._loggedInAs;
   }
 

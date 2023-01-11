@@ -3,42 +3,95 @@
     <div class="title">
       <h1>Overzicht van {{ _loggedInAs }}
         <select class="dropdown-users selected">
-        <option *ngFor="let user of users" >{{ user.username }}</option>
-      </select>
-    </h1>
-      <h5 class="date">van {{ DateSelected | date:'dd/MM/yyyy'}} </h5>
+          <option *ngFor="let user of users">{{ user.username }}</option>
+        </select>
+      </h1>
+      <div *ngIf="isFiltered; else selectADate">
+        <h5 class="date">van {{ todayDate | date:'dd/MM/yyyy'}} </h5>
+      </div>
+      <ng-template #selectADate>
+        <h5 class="date">Alle afspraken </h5>
+      </ng-template>
     </div>
-    <div *ngIf="DateSelected">
-      hoi
+    <div class="row m-1">Date Picker:</div>
+    <div class="input-group">
+      <input type="date" [(ngModel)]="todayDate">
+      <button (click)="FetchDateSelected()" class="btn btn-primary btn-block">
+        Fetch date
+      </button>
     </div>
-    <div>
-      Date Picker: <input type="date" [(ngModel)] = "todayDate">
-    <button (click) = "FetchDateSelected()">
-      Fetch date
-    </button>
+
+    <div *ngIf="isFiltered; else showAllAppointments">
+      <div *ngIf="appointmentsFiltered.length > 0; else noAppointmentsArePlanned">
+        <table class="table">
+          <thead>
+          <tr>
+            <th scope="col">Begint om</th>
+            <th scope="col">Naam</th>
+            <th scope="col">Adres</th>
+            <th scope="col"></th>
+          </tr>
+          </thead>
+
+          <tbody>
+          <tr *ngFor="let appointment of appointmentsFiltered">
+            <td><i class="fa fa-clock-o"></i> {{ appointment.datum | date:'HH:mm' }} </td>
+            <td> {{ appointment.patientModel.naam }} </td>
+            <td> {{ appointment.patientModel.adres }}  </td>
+            <td>
+              <button class="btn btn-primary btn-block"
+                      [routerLink]="['/visitebriefje/' , appointment.patientModel.id ]">
+                Visite
+              </button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <ng-template #noAppointmentsArePlanned>
+        <table class="table">
+          <thead>
+          <tr>
+            <th scope="col">Begint om</th>
+            <th scope="col">Naam</th>
+            <th scope="col">Adres</th>
+            <th scope="col"></th>
+          </tr>
+          </thead>
+
+          <tbody>
+          0 Appointments are planned
+          </tbody>
+        </table>
+      </ng-template>
     </div>
-    <table class="table">
-      <thead>
+
+    <ng-template #showAllAppointments>
+      <table class="table">
+        <thead>
         <tr>
-          <th scope="col">Begint om</th>
+          <th scope="col">Datum en tijd</th>
           <th scope="col">Naam</th>
           <th scope="col">Adres</th>
           <th scope="col"></th>
         </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let appointment of appointmentsFiltered">
-            <td><i class="fa fa-clock-o"></i> {{ appointment.datum | date:'HH:mm' }} </td>
-            <td> {{ appointment.patientModel.naam }} </td>
-            <td> {{ appointment.patientModel.adres }}  </td>
-            <td><button class="btn btn-primary btn-block" [routerLink]="['/visitebriefje/' , appointment.patientModel.id ]">
-                  Visite
-            </button>
-            </td>
-        </tr>
-    </tbody>
+        </thead>
 
-    </table>
+        <tbody>
+        <tr *ngFor="let appointment of appointments">
+          <td><i class="fa fa-clock-o"></i> {{ appointment.datum | date:'dd/MM/yy HH:mm' }} </td>
+          <td> {{ appointment.patientModel.naam }} </td>
+          <td> {{ appointment.patientModel.adres }}  </td>
+          <td>
+            <button class="btn btn-primary btn-block" [routerLink]="['/visitebriefje/' , appointment.patientModel.id ]">
+              Visite
+            </button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </ng-template>
+
   </div>
 </div>
 
