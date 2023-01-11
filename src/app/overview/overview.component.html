@@ -1,12 +1,15 @@
 <div class="container">
   <div class="container-body">
     <div class="title">
-      <h1>Overzicht van 
+      <h1>Overzicht van
         <select class="dropdown-users selected">
         <option *ngFor="let user of users" >{{ user.username }}</option>
       </select>
     </h1>
-      <h5 class="date">van {{ DateSelected }} </h5>
+      <h5 class="date">van {{ DateSelected | date:'dd/MM/yyyy'}} </h5>
+    </div>
+    <div *ngIf="DateSelected">
+      hoi
     </div>
     <div>
       Date Picker: <input type="date" [(ngModel)] = "DateSelected">
@@ -34,7 +37,7 @@
             </td>
         </tr>
     </tbody>
-    
+
     </table>
   </div>
 </div>

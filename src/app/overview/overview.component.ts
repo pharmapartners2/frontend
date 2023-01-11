@@ -58,20 +58,50 @@ export class OverviewComponent implements OnInit {
       this._users = response;
       console.log("Users opgehaald: ", response)
     })
-    this.DateSelected = this.datepipe.transform(new Date(), 'dd/MM/yyyy');
-    this._appointmentsFiltered = this._appointments.filter((appointment : Appointment) => appointment.datum == this.DateSelected);
+    this.isFiltered = false;
+    //this.DateSelected = this.datepipe.transform(new Date(), 'dd/MM/yyyy');
+
   }
   DateSelected: any;
+  isFiltered: boolean;
+
+  dateFilter(){
+    this._appointmentsFiltered = this._appointments.filter((Appointment, index) =>{
+      //let date = this.datepipe.transform(Appointment.datum, 'yyyy-MM-dd')
+/*      console.log(date + " date is geformat. Dit is de slected date " + this.DateSelected)
+      if(date == this.DateSelected){
+        console.log(Appointment.datum + " Datum van de Appointment gelijk aan " + this.DateSelected )
+      }*/
+
+      return Appointment.datum == this.DateSelected;
+    });
+  }
   FetchDateSelected(){
-    console.log("date selected by user ---" +  this.DateSelected)
-    this.datepipe.transform(this.DateSelected, 'dd/MM/yyyy')
-    //this._appointments.filter(s => s.datum == this.DateSelected);
+    /*if(!this.isFiltered){
+      this.dateFilter();
+      this.isFiltered = true;
+      console.log(this._appointmentsFiltered+ "Should be full")
+
+    } else {
+      if(this.DateSelected.isEmpty()){
+        this.DateSelected = this.datepipe.transform(new Date(), 'dd/MM/yyyy');
+      }
+      console.log(this.DateSelected + " date selected")
+      this.DateSelected = this.datepipe.transform(new Date(), 'dd/MM/yyyy');
+      console.log(this.DateSelected + " date selected")
+      this._appointmentsFiltered = new Array<Appointment>();
+      console.log(this._appointmentsFiltered+ "Should be empty")
+      this.dateFilter();
+      this.isFiltered = true;
+      console.log(this._appointmentsFiltered+ "Should be filled")
+    }*/
+    this.dateFilter()
   }
 
   get appointments(): Appointment[]{
     return this._appointments;
   }
-  
+
   get patients(): Patient[] {
     return this._patients;
   }
