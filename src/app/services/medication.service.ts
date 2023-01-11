@@ -13,6 +13,6 @@ export class MedicationService {
   }
 
   getMedication(id: number) {
-    return this.http.get<Array<MedicationPrescription>>(this.lclhostUrl + 'medicationprescription/' + id, {headers: {'Authorization': `Bearer ${this.tokenService.getToken()}`}});
+    return this.http.get<Array<MedicationPrescription>>(this.onlinehostUrl + 'medicationprescription/' + id, {headers: {'Authorization': `Bearer ${this.tokenService.getToken()}`}});
   }
 }

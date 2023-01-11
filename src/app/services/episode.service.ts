@@ -15,6 +15,6 @@ export class EpisodeService {
     }
 
     getEpisode(id: number) {
-        return this.http.get<Episode[]>(this.lclhostUrl + 'episode/' + id, { headers: { 'Authorization': `Bearer ${this.tokenService.getToken()}` } });
+        return this.http.get<Episode[]>(this.onlinehostUrl + 'episode/' + id, { headers: { 'Authorization': `Bearer ${this.tokenService.getToken()}` } });
     }
 }

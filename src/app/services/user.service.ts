@@ -15,7 +15,7 @@ import { User } from "../models/user.model";
     }
 
     getUsers(){
-      return this.http.get<Array<User>>(this.lclhostUrl + 'user', {headers: {'Authorization': `Bearer ${this.tokenService.getToken()}`}});
+      return this.http.get<Array<User>>(this.onlinehostUrl + 'user', {headers: {'Authorization': `Bearer ${this.tokenService.getToken()}`}});
 
     }
 
