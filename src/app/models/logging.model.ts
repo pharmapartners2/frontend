@@ -4,8 +4,7 @@ export class Logging {
     private _logline: string;
 
 
-    constructor(userId: number, logline: string, datetime: string, {
-    }) {
+    constructor(userId: number, logline: string, datetime: string) {
         this._userId = userId;
         this._logline = logline;
         this._datetime = datetime;

@@ -14,11 +14,14 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import {AuthService} from "./services/auth.service";
-import {TokenService} from "./services/token.service";
-import {PatientService} from "./services/patient.service";
-import {MedicationService} from "./services/medication.service";
+import { AuthService } from "./services/auth.service";
+import { TokenService } from "./services/token.service";
+import { AppointmentService} from "./services/appointment.service"
+import { PatientService } from "./services/patient.service";
+import { MedicationService } from "./services/medication.service";
+import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
 import { AddEpisodeComponent } from './episode/add-episode/add-episode.component';
+
 
 @NgModule({
   declarations: [
@@ -42,7 +45,8 @@ import { AddEpisodeComponent } from './episode/add-episode/add-episode.component
     ReactiveFormsModule,
 
   ],
-  providers: [DatePipe, AuthService, TokenService, PatientService, MedicationService],
+  providers: [DatePipe, AuthService, TokenService, PatientService, MedicationService, { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
+    JwtHelperService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
