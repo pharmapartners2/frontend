@@ -11,7 +11,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { HttpHeaders } from '@angular/common/http';
 import { Appointment } from '../models/appointment.model';
 import { PatientService } from '../services/patient.service';
-import { forkJoin } from 'rxjs';
+import { forkJoin, skip } from 'rxjs';
 
 @Component({
   selector: 'app-overview',
@@ -20,8 +20,10 @@ import { forkJoin } from 'rxjs';
 })
 export class OverviewComponent implements OnInit {
   currentDateTime: string | null;
+  todayDate: Date;
   private _appointments: Appointment[];
   private _appointmentsFiltered: Appointment[];
+  private _appointEmpty: Appointment[];
   private _users: User[];
   private _patients: Patient[];
   _loggedInAs:any;
@@ -37,6 +39,7 @@ export class OverviewComponent implements OnInit {
       this.currentDateTime = this.datepipe.transform(new Date(), 'dd-MM-yyyy');
       this._appointments = Array<Appointment>();
       this._appointmentsFiltered = Array<Appointment>();
+      this._appointEmpty = Array<Appointment>();
       this._users = Array<User>();
       this._patients = Array<Patient>();
       this._loggedInAs = "";
@@ -51,7 +54,7 @@ export class OverviewComponent implements OnInit {
       this._patients = response;
       console.log("Patiënten opgehaald: ", response)
     });
-    console.log("JSON object uit tokebn: ", this.tokenService.getIdfromToken());
+
     this.appointmentService.getAppointmentByUser(this.tokenService.getIdfromToken()).subscribe((response) => {
       this._appointments = response;
       console.log("Afspraken opgehaald: ", response, "met het id: ", this.tokenService.getIdfromToken())
@@ -63,27 +66,25 @@ export class OverviewComponent implements OnInit {
     })
 
     this._loggedInAs =  this.tokenService.getUsernamefromToken();
-    console.log("Kleine logger" , this._loggedInAs.username);
 
     console.log("Logged in as: ", this._loggedInAs);
     this.DateSelected = this.datepipe.transform(new Date(), 'dd/MM/yyyy');
-    this._appointmentsFiltered = this._appointments.filter((appointment : Appointment) => appointment.datum == this.DateSelected);
+
     this.isFiltered = false;
     //this.DateSelected = this.datepipe.transform(new Date(), 'dd/MM/yyyy');
 
   }
   DateSelected: any;
   isFiltered: boolean;
-
   dateFilter(){
-    this._appointmentsFiltered = this._appointments.filter((Appointment, index) =>{
-      //let date = this.datepipe.transform(Appointment.datum, 'yyyy-MM-dd')
-/*      console.log(date + " date is geformat. Dit is de slected date " + this.DateSelected)
-      if(date == this.DateSelected){
-        console.log(Appointment.datum + " Datum van de Appointment gelijk aan " + this.DateSelected )
-      }*/
-
-      return Appointment.datum == this.DateSelected;
+    this._appointmentsFiltered = [];
+    this._appointments.forEach(appointment => {
+      let testDate = new Date(appointment.datum);
+      let todayDate2 = new Date(this.todayDate);
+      console.log(testDate.getDate() + " testDate")
+      if(testDate.getDate() == todayDate2.getDate()){
+        this._appointmentsFiltered.push(appointment);
+      }
     });
   }
   FetchDateSelected(){
@@ -105,7 +106,11 @@ export class OverviewComponent implements OnInit {
       this.isFiltered = true;
       console.log(this._appointmentsFiltered+ "Should be filled")
     }*/
+    if(this.todayDate == null){
+      this._appointmentsFiltered = this._appointments;
+    } else {
     this.dateFilter()
+    }
   }
 
   get appointments(): Appointment[]{
@@ -121,6 +126,10 @@ export class OverviewComponent implements OnInit {
 
   get users(): User[] {
     return this._users;
+  }
+
+  get appointmentsFiltered(): Appointment[] {
+    return this._appointmentsFiltered;
   }
 
 }

@@ -30,7 +30,6 @@ export class TokenService {
       console.log('UserId not found in token');
       return null;
     }
-    console.log('Object found in token: ', userId.username);
     return userId.sub;
   }
   getIdfromToken(): any {
@@ -45,7 +44,6 @@ export class TokenService {
       console.log('UserId not found in token');
       return null;
     }
-    console.log('Object found in token: ', userId.username);
     return userId.userId;
   }
 

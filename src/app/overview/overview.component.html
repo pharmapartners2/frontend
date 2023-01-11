@@ -12,7 +12,7 @@
       hoi
     </div>
     <div>
-      Date Picker: <input type="date" [(ngModel)] = "DateSelected">
+      Date Picker: <input type="date" [(ngModel)] = "todayDate">
     <button (click) = "FetchDateSelected()">
       Fetch date
     </button>
@@ -27,7 +27,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let appointment of appointments">
+        <tr *ngFor="let appointment of appointmentsFiltered">
             <td><i class="fa fa-clock-o"></i> {{ appointment.datum | date:'HH:mm' }} </td>
             <td> {{ appointment.patientModel.naam }} </td>
             <td> {{ appointment.patientModel.adres }}  </td>
