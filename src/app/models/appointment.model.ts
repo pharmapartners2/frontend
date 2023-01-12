@@ -4,7 +4,7 @@ export class Appointment {
   private _userId: number;
   private _id: number;
   private _patientid: number;
-  private _datum: string | null;
+  private _datum: Date;
   private _beschrijving: string;
   private _patientModel: Patient;
 
@@ -12,7 +12,7 @@ export class Appointment {
   constructor(public datepipe: DatePipe, userId: number, patientId: number, datum: Date, beschrijving: string, patient:Patient) {
     this._userId=userId;
     this._patientid=patientId;
-    this._datum=this.datepipe.transform(this.datum, 'dd-MM-yyyy');
+    this._datum=datum;
     this._beschrijving=beschrijving;
     this._patientModel=patient;
   }
@@ -23,7 +23,7 @@ export class Appointment {
   get patientid() : number {
     return this._patientid;
   }
-  get datum() : string | null {
+  get datum() : Date {
     return this._datum;
   }
   get beschrijving() : string {
@@ -33,7 +33,7 @@ export class Appointment {
   get patientModel(): Patient {
     return this._patientModel;
   }
-  
+
 
 }
 

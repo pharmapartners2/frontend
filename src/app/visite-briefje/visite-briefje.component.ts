@@ -17,7 +17,7 @@ import { IntolerantieService } from '../services/intolerantie.service';
 @Component({
   selector: 'app-visite-briefje',
   templateUrl: './visite-briefje.component.html',
-  styleUrls: ['./visite-briefje.component.css']
+  styleUrls: ['./visite-briefje.component.css'],
 })
 export class VisiteBriefjeComponent implements OnInit {
   private _patient: Patient;
@@ -29,9 +29,9 @@ export class VisiteBriefjeComponent implements OnInit {
   currentDateTime: string | null;
 
   constructor(
-    private patientService: PatientService, 
-    private route: ActivatedRoute, 
-    private datepipe: DatePipe, 
+    private patientService: PatientService,
+    private route: ActivatedRoute,
+    private datepipe: DatePipe,
     private medicationService: MedicationService,
     private episodeService: EpisodeService,
     private journalService: JournalService,
