@@ -1,4 +1,7 @@
 <div class="container">
+  <div class="row">
+    <app-add-journaal-form></app-add-journaal-form>
+  </div>
   <div class="container-body">
     <div class="title">
       <h1>Overzicht van {{ _loggedInAs }}
@@ -13,6 +16,7 @@
         <h5 class="date">Alle afspraken </h5>
       </ng-template>
     </div>
+
     <div class="row m-1">Date Picker:</div>
     <div class="input-group">
       <input type="date" [(ngModel)]="todayDate">
