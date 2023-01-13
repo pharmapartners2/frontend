@@ -2,9 +2,14 @@
   <div class="container-body">
     <div class="title">
       <h1>Overzicht van {{ _loggedInAs }}
-        <select class="dropdown-users selected">
-          <option *ngFor="let user of users">{{ user.username }}</option>
+
+        <select id="selectUser" class="dropdown-users selected" [(ngModel)]="userFromDropdown">
+          <option *ngFor="let user of users" >{{ user.id }}</option>
         </select>
+        <button (click)="userFilter()" class="btn btn-primary btn-block">
+          Selecteer
+        </button>
+
       </h1>
       <div *ngIf="isFiltered; else selectADate">
         <h5 class="date">van {{ todayDate | date:'dd/MM/yyyy'}} </h5>
@@ -94,4 +99,3 @@
 
   </div>
 </div>
-
