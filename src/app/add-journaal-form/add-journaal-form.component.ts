@@ -93,37 +93,33 @@ export class AddJournaalFormComponent implements OnInit {
         let code = element.get('code')?.value;
         let datum = element.get('datum')?.value;
         let episode: PostEpisode = new PostEpisode(patientId, datum, beschrijving, code);
-        try {
-          this.episodeService.postEpisode(episode).subscribe((result) => {
-            this.episodeRegels(episodeIndex).controls.forEach((element, regelIndex) => {
-              let beschrijving = element.get('beschrijving')?.value;
-              let code = element.get('code')?.value;
-              let datum = element.get('datum')?.value;
-              let episodeId = result.id
-              let episodeRegel: PostEpisodeRegel = new PostEpisodeRegel(patientId, beschrijving, code, datum, episodeId)
-              this.journaalService.postJournalRegel(episodeRegel).subscribe((result) => {
-
-              });
-            })
-          })
-        } catch (err) {
-        }
-      })
-      this.modalService.dismissAll();
+        this.postEpisode(episode, episodeIndex, patientId);
+      });
     }
-    //
-    // this.episodes.controls.forEach((element, index) => {
-    //   let beschrijving = element.get('beschrijving')?.value;
-    //   let code = element.get('code')?.value;
-    //   let datum = element.get('datum')?.value;
-    //
-    //   // @ts-ignore
-    //   let episode: PostJournal = new PostJournal(patientId, beschrijving, code, datum)
-    //   this.journaalService.postJournal(episode).subscribe(result => {
-    //     console.log(result)
-    //   })
-    // });
+  }
 
+  postEpisode(episode: PostEpisode, episodeIndex: number, patientId: number) {
+    this.episodeService.postEpisode(episode).subscribe((result) => {
+      this.postJournalLine(episodeIndex, result.id, patientId)
+    })
+  }
 
+  postJournalLine(episodeIndex: number, episodeId: number, patientId: number) {
+    this.episodeRegels(episodeIndex).controls.forEach((element, regelIndex) => {
+      let beschrijving = element.get('beschrijving')?.value;
+      let code = element.get('code')?.value;
+      let datum = element.get('datum')?.value;
+      let episodeRegel: PostEpisodeRegel = new PostEpisodeRegel(patientId, beschrijving, code, datum, episodeId)
+      this.journaalService.postJournalRegel(episodeRegel).subscribe(
+        result => {
+
+        },
+        error => {
+
+        },
+        () => {
+          this.modalService.dismissAll()
+        });
+    })
   }
 }
