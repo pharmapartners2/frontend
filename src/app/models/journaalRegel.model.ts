@@ -1,4 +1,4 @@
-export class Journal {
+export class JournaalRegel {
     private _id: number;
     private _patientId: number;
     private _code: string;
@@ -55,22 +55,15 @@ export class Journal {
     }
 }
 
-export class PostJournal {
-  private _patientId: number;
+export class PostJournaalRegel {
   private _code: string;
   private _beschrijving: string;
   private _datum: Date;
 
-
   constructor(patientId: number, beschrijving: string, code: string, datum: Date) {
-    this._patientId = patientId;
     this._beschrijving = beschrijving;
     this._code = code;
     this._datum = datum;
-  }
-
-  get patientId(): number {
-    return this._patientId;
   }
 
   get beschrijving(): string {
@@ -83,10 +76,6 @@ export class PostJournal {
 
   get datum(): Date {
     return this._datum;
-  }
-
-  set patientId(value: number) {
-    this._patientId = value;
   }
 
   set beschrijving(value: string) {

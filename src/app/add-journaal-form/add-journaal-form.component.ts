@@ -4,7 +4,7 @@ import {JournalService} from "../services/journal.service";
 import {Patient} from "../models/patient.model";
 import {FormControl, FormGroup, Validator, FormBuilder, Validators, FormArray} from "@angular/forms";
 import {NgbModal, NgbModalConfig} from "@ng-bootstrap/ng-bootstrap";
-import {Journal, PostJournal} from "../models/journal.model";
+import {JournaalRegel, PostJournaalRegel} from "../models/journaalRegel.model";
 
 @Component({
   selector: 'app-add-journaal-form',
@@ -13,38 +13,61 @@ import {Journal, PostJournal} from "../models/journal.model";
 export class AddJournaalFormComponent implements OnInit {
   @Input() patientId: number
   private _patients: Patient[];
-  journaalForm = this.fb.group({
-    selectedPatientId: ['', Validators.required],
-    regels: this.fb.array([]),
-  });
+  episodeForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private patientService: PatientService, config: NgbModalConfig, private modalService: NgbModal, private journaalService: JournalService) {
+  constructor(private fb: FormBuilder, private patientService: PatientService, config: NgbModalConfig, private modalService: NgbModal) {
     config.backdrop = 'static'
   }
 
   ngOnInit(): void {
-    this.addRegel()
     this.patientService.getPatients()
       .subscribe(response => {
         this._patients = response;
       });
+
+    this.episodeForm = this.fb.group({
+      selectedPatientId: ['', Validators.required],
+      episodes: this.fb.array([]),
+    });
   }
 
-  get regels(): FormArray {
-    return this.journaalForm.get('regels') as FormArray;
+  episodes(): FormArray {
+    return this.episodeForm.get('episodes') as FormArray;
   }
 
-  addRegel() {
-    const regelForm = this.fb.group({
+  episodeRegels(episodeIndex: number): FormArray {
+    return this.episodes().at(episodeIndex).get('regels') as FormArray;
+  }
+
+  newEpisode(): FormGroup{
+    return this.fb.group({
       beschrijving: ['', Validators.required],
       code: [Validators.required],
       datum: [Validators.required],
+      regels: this.fb.array([])
     });
-    this.regels.push(regelForm)
   }
 
-  removeRegel(index: number) {
-    this.regels.removeAt(index);
+  newRegel(): FormGroup {
+    return this.fb.group({
+      beschrijving: [''],
+      datum: [''],
+    });
+  }
+
+  addEpisode() {
+    this.episodes().push(this.newEpisode());
+  }
+  addEpisodeRegel(episodeIndex: number) {
+    this.episodeRegels(episodeIndex).push(this.newRegel());
+  }
+
+  removeEpisode(index: number) {
+    this.episodes().removeAt(index);
+  }
+
+  removeRegel(episodeIndex: number, regelIndex: number) {
+    this.episodeRegels(episodeIndex).removeAt(regelIndex)
   }
 
   get patients(): Patient[] {
@@ -56,20 +79,20 @@ export class AddJournaalFormComponent implements OnInit {
   }
 
   submitForm() {
-    // @ts-ignore
-    let patientId = this.journaalForm.get('selectedPatientId').value;
-
-    this.regels.controls.forEach((element, index) => {
-      let beschrijving = element.get('beschrijving')?.value;
-      let code = element.get('code')?.value;
-      let datum = element.get('datum')?.value;
-
-      // @ts-ignore
-      let episode: PostJournal = new PostJournal(patientId, beschrijving, code, datum)
-      this.journaalService.postJournal(episode).subscribe(result => {
-        console.log(result)
-      })
-    });
+    // // @ts-ignore
+    // let patientId = this.journaalForm.get('selectedPatientId').value;
+    //
+    // this.episodes.controls.forEach((element, index) => {
+    //   let beschrijving = element.get('beschrijving')?.value;
+    //   let code = element.get('code')?.value;
+    //   let datum = element.get('datum')?.value;
+    //
+    //   // @ts-ignore
+    //   let episode: PostJournal = new PostJournal(patientId, beschrijving, code, datum)
+    //   this.journaalService.postJournal(episode).subscribe(result => {
+    //     console.log(result)
+    //   })
+    // });
 
     this.modalService.dismissAll();
   }
