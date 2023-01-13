@@ -80,3 +80,50 @@ export class icpcCode {
     }
 
 }
+
+export class PostEpisode {
+  private _patientId: number;
+  private _datum: Date;
+  private _beschrijving: string;
+  private _icpccode: number;
+
+  constructor(patientId: number, datum: Date, beschrijving: string, icpccode: number) {
+    this._patientId = patientId;
+    this._datum = datum;
+    this._beschrijving = beschrijving;
+    this._icpccode = icpccode;
+  }
+
+  get patientId(): number {
+    return this._patientId;
+  }
+
+  get datum(): Date {
+    return this._datum;
+  }
+
+  get beschrijving(): string {
+    return this._beschrijving;
+  }
+
+  get icpccode(): number {
+    return this._icpccode;
+  }
+
+  set patientId(value: number) {
+    this._patientId = value;
+  }
+
+  set datum(value: Date) {
+    this._datum = value;
+  }
+
+  set beschrijving(value: string) {
+    this._beschrijving = value;
+  }
+
+  set icpcCode(value: number) {
+    this._icpccode = value;
+  }
+
+}
