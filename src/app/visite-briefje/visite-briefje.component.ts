@@ -81,7 +81,7 @@ export class VisiteBriefjeComponent implements OnInit {
       });
   }
 
-  
+
 
   get patient(): Patient {
     return this._patient;
