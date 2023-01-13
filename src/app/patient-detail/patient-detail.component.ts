@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {PatientService} from "../services/patient.service";
 import {Patient} from "../models/patient.model";
+import { TokenService } from '../services/token.service';
+import { LoggingService } from '../services/logging.service';
+import { Logging } from '../models/logging.model';
 
 @Component({
   selector: 'app-patient-detail',
@@ -11,16 +14,18 @@ import {Patient} from "../models/patient.model";
 export class PatientDetailComponent implements OnInit {
   private _patient: Patient;
 
-  constructor(private patientService : PatientService, private route: ActivatedRoute) {
+  constructor(private patientService : PatientService, private route: ActivatedRoute, private tokenService: TokenService, private loggingService: LoggingService) {
   }
 
   ngOnInit(): void {
     const routeParams = this.route.snapshot.paramMap;
     const idFromRoute = Number(routeParams.get('patientId'));
+    this.loggingService.registerLogging(new Logging(this.tokenService.getIdfromToken(), "Patienten detail geopend", new Date()));
 
     this.patientService.getPatient(idFromRoute)
       .subscribe(response => {
         this._patient = response;
+        this.loggingService.registerLogging(new Logging(this.tokenService.getIdfromToken(), "Gegevens van patient " + this._patient.id + " opgehaald", new Date()));
         console.log("Gegevens van patient opgehaald: ", response)
       });
   }

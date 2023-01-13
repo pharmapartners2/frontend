@@ -46,7 +46,6 @@ a {
   color: #ed1e79;
   text-decoration-color: #ed1e79;
 }
-
 table {
   width: 80%;
   margin-left: auto;
@@ -57,7 +56,23 @@ tr {
   vertical-align: middle;
   line-height: 30px;
 }
+
 td{
   padding: 5px;
   margin: 0px;
+}
+
+select.dropdown-users, select.dropdown-users:focus, select.dropdown-users:active {
+  border: none !important;
+  border-bottom: solid 2px black !important;
+  cursor: pointer !important;
+}
+.dropdown-users{
+  border: none !important;
+  border-bottom: solid 2px black !important;
+  cursor: pointer !important;
+}
+
+select.dropdown-users option[value=any] {
+  border: none !important;
 }

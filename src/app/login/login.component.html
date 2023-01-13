@@ -31,15 +31,11 @@
               Wachtwoord is minimaal 4 karakters lang.
             </div>
           </div>
-        </div>
-        <div *ngIf="submitted && loginForm.errors" class="error">
-          <div *ngIf="loginForm.hasError('Unauthorized')">
-            {{ err }}
+          <div *ngIf="submitted && err" class="error">
+              {{ err }} 
           </div>
         </div>
         
-
-
         <!-- Submit button -->
         <button type="submit" class="btn btn-primary btn-block mb-4" (click)="LogIn()">
           Sign in
