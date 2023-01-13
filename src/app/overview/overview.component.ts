@@ -22,6 +22,8 @@ export class OverviewComponent implements OnInit {
   private _appointmentsFiltered: Appointment[];
   private _users: User[];
   private _patients: Patient[];
+  private _appointmentsByUser: Appointment[];
+  private _appointmentsByUserFiltered: Appointment[];
   _loggedInAs: any | null;
   userFromDropdownUsername: string;
   userFromDropdown: number;
@@ -42,8 +44,9 @@ export class OverviewComponent implements OnInit {
     this._users = Array<User>();
     this._patients = Array<Patient>();
     this._loggedInAs = '';
+    this._appointmentsByUser = Array<Appointment>();
+    this._appointmentsByUserFiltered = Array<Appointment>();
   }
-
   ngOnInit(): void {
     if (!this.tokenService.isValidToken()) {
       this.authService.logout();
@@ -66,6 +69,16 @@ export class OverviewComponent implements OnInit {
         );
       });
 
+      this.appointmentService
+      .getAppointments()
+      .subscribe((response) => {
+        this._appointmentsByUser = response;
+        console.log(
+          'Afspraken opgehaald by user: ',
+          response,
+        );
+      });
+
     this.userService.getUsers().subscribe((response) => {
       this._users = response;
       console.log('Users opgehaald: ', response);
@@ -75,27 +88,27 @@ export class OverviewComponent implements OnInit {
     this.userFromDropdown = this.tokenService.getIdfromToken();
 
     console.log('Logged in as: ', this._loggedInAs);
+    this.isLoaded = false;
 
-    this.isFiltered = false;
   }
-
+  isLoaded: boolean;
   isFiltered: boolean;
 
   userFilter() {
     this.userId = document.getElementById('selectUser');
     console.log(parseInt(this.userId.value));
     this._appointmentsFiltered = [];
-    this._appointments.forEach((Appointment) => {
-      console.log("item: "+ Appointment.patientModel)
-      if (Appointment.userid == parseInt(this.userId.value)) {
-        this._appointmentsFiltered.push(Appointment);
+    this._appointmentsByUser.forEach((appointment) => {
+      if (appointment.userId == parseInt(this.userId.value)) {
+        this._appointmentsFiltered.push(appointment);
       }
     });
     console.log(this._appointmentsFiltered);
   }
+
   dateFilter() {
-    this._appointmentsFiltered = [];
-    this._appointments.forEach((appointment) => {
+    this._appointmentsByUserFiltered = [];
+    this._appointmentsFiltered.forEach((appointment) => {
       let AppointmentDate = new Date(appointment.datum);
       let todayDate = new Date(this.todayDate);
       if (
@@ -103,24 +116,26 @@ export class OverviewComponent implements OnInit {
         AppointmentDate.getMonth() == todayDate.getMonth() &&
         AppointmentDate.getFullYear() == todayDate.getFullYear()
       ) {
-        this._appointmentsFiltered.push(appointment);
+        this._appointmentsByUserFiltered.push(appointment);
       }
     });
-    if (this._appointmentsFiltered.length > 0) {
+    if (this._appointmentsByUserFiltered.length > 0) {
       this.isFiltered = true;
       console.log(
         this.isFiltered + ' Deze hele lieve code zou TRUE moeten geven'
       );
     } else {
       this._appointmentsFiltered = [];
-      this.isFiltered = true;
+      this.isFiltered = false;
     }
   }
 
   FetchDateSelected() {
+    this.isLoaded =true;
     if (this.todayDate == undefined || this.todayDate.toString() == '') {
       console.log('Deze lieve code is undefined ---' + this.todayDate + '---');
-      this._appointmentsFiltered = this._appointments.map((a) => {
+      this.userFilter();
+      this._appointmentsByUserFiltered = this._appointments.map((a) => {
         return a;
       });
       this.isFiltered = false;
@@ -128,6 +143,8 @@ export class OverviewComponent implements OnInit {
         this.isFiltered + ' Deze hele lieve code zou false moeten geven'
       );
     } else {
+
+      this.userFilter();
       this.dateFilter();
     }
   }
@@ -151,4 +168,8 @@ export class OverviewComponent implements OnInit {
   get appointmentsFiltered(): Appointment[] {
     return this._appointmentsFiltered;
   }
+  get appointmentsByUserFiltered(): Appointment[] {
+    return this._appointmentsByUserFiltered;
+  }
+
 }
