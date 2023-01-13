@@ -1,4 +1,4 @@
-import {JournaalRegel} from "./journaalRegel.model";
+import {EpisodeRegel} from "./EpisodeRegel.model";
 
 export class Episode {
     private _id: number;

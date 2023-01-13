@@ -1,4 +1,4 @@
-export class JournaalRegel {
+export class EpisodeRegel {
     private _id: number;
     private _patientId: number;
     private _code: string;
@@ -55,7 +55,7 @@ export class JournaalRegel {
     }
 }
 
-export class PostJournaalRegel {
+export class PostEpisodeRegel {
   private _code: string;
   private _beschrijving: string;
   private _datum: Date;

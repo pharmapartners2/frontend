@@ -4,7 +4,7 @@ import {JournalService} from "../services/journal.service";
 import {Patient} from "../models/patient.model";
 import {FormControl, FormGroup, Validator, FormBuilder, Validators, FormArray} from "@angular/forms";
 import {NgbModal, NgbModalConfig} from "@ng-bootstrap/ng-bootstrap";
-import {JournaalRegel, PostJournaalRegel} from "../models/journaalRegel.model";
+import {EpisodeRegel, PostEpisodeRegel} from "../models/EpisodeRegel.model";
 
 @Component({
   selector: 'app-add-journaal-form',
