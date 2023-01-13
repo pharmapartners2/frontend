@@ -26,7 +26,7 @@ export class PatientListComponent implements OnInit {
       this._patients = response;
       console.log("Lijst met patienten opgehaald: ", response)
     });
-    this.loggingService.registerLogging(new Logging(this.tokenService.getIdfromToken(), "Patienten lijst geopend", Date()));
+    this.loggingService.registerLogging(new Logging(this.tokenService.getIdfromToken(), "Patienten lijst geopend", new Date()));
   }
 
   get patients(): Patient[] {

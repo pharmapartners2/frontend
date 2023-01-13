@@ -1,10 +1,10 @@
 export class Logging {
     private _userId: number;
-    private _datetime: string;
+    private _datetime: Date;
     private _logline: string;
 
 
-    constructor(userId: number, logline: string, datetime: string) {
+    constructor(userId: number, logline: string, datetime: Date) {
         this._userId = userId;
         this._logline = logline;
         this._datetime = datetime;
@@ -18,7 +18,7 @@ export class Logging {
         return this._logline;
     }
 
-    get datetime(): string {
+    get datetime(): Date {
         return this._datetime;
     }
 
@@ -30,7 +30,7 @@ export class Logging {
         this._logline = value;
     }
 
-    set datetime(value: string) {
+    set datetime(value: Date) {
         this._datetime = value;
     }
 }

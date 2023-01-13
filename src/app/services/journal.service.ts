@@ -18,6 +18,6 @@ export class JournalService {
         return this.http.get<Journal[]>(this.lclhostUrl + 'journal/' + id, { headers: { 'Authorization': `Bearer ${this.tokenService.getToken()}` } });
     }
     postJournal(journal: PostJournal) {
-      return this.http.post(this.onlinehostUrl + 'journal', journal, { headers: { 'Authorization': `Bearer ${this.tokenService.getToken()}` }} );
+      return this.http.post(this.lclhostUrl + 'journal', journal, { headers: { 'Authorization': `Bearer ${this.tokenService.getToken()}` }} );
     }
 }

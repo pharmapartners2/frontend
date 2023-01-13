@@ -14,10 +14,10 @@ import { User } from "../models/user.model";
 
     }
     getUserById(id:string){
-      return this.http.get<User>(this.onlinehostUrl + 'user/'  + id, {headers: {'Authorization': `Bearer ${this.tokenService.getToken()}`}});
+      return this.http.get<User>(this.lclhostUrl + 'user/'  + id, {headers: {'Authorization': `Bearer ${this.tokenService.getToken()}`}});
     }
     getUsers(){
-      return this.http.get<Array<User>>(this.onlinehostUrl + 'user', {headers: {'Authorization': `Bearer ${this.tokenService.getToken()}`}});
+      return this.http.get<Array<User>>(this.lclhostUrl + 'user', {headers: {'Authorization': `Bearer ${this.tokenService.getToken()}`}});
     }
 
   }

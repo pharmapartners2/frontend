@@ -3,8 +3,6 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { TokenService } from "../services/token.service";
 import { Router } from "@angular/router";
-import { HttpErrorResponse, HttpHeaderResponse, HttpResponse, HttpStatusCode } from '@angular/common/http';
-import { catchError, filter, Subject } from 'rxjs';
 import { LoggingService } from '../services/logging.service';
 import { Logging } from '../models/logging.model';
 
@@ -45,7 +43,11 @@ export class LoginComponent implements OnInit {
       .subscribe(response => {
         console.log("Ingelogd door gebruiker: ", this.loginForm.value.username, response)
         this.tokenService.set('jwt', response.toString());
-        this.loggingService.registerLogging(new Logging(this.tokenService.getIdfromToken(), "Gebruiker " + this.tokenService.getIdfromToken() + " ingelogd", Date()));
+        let currentDate = new Date();
+        this.loggingService.registerLogging(new Logging(this.tokenService.getIdfromToken(), "Gebruiker " + this.tokenService.getIdfromToken().toString() + " ingelogd", currentDate))
+          .subscribe(response => {
+            console.log("logged login", response);
+          });
         this.router.navigate(['/']);
       },
       error => {

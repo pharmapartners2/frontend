@@ -45,7 +45,6 @@ import { AddEpisodeComponent } from './episode/add-episode/add-episode.component
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-
   ],
   providers: [DatePipe, AuthService, TokenService, PatientService, MedicationService, { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
     JwtHelperService],
