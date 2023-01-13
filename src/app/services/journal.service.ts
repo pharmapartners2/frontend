@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { TokenService } from "./token.service";
-import { Journal } from "../models/journal.model";
+import {Journal, PostJournal} from "../models/journal.model";
 
 @Injectable({
     providedIn: 'root'
@@ -16,5 +16,8 @@ export class JournalService {
 
     getJournal(id: number) {
         return this.http.get<Journal[]>(this.lclhostUrl + 'journal/' + id, { headers: { 'Authorization': `Bearer ${this.tokenService.getToken()}` } });
+    }
+    postJournal(journal: PostJournal) {
+      return this.http.post(this.onlinehostUrl + 'journal', journal, { headers: { 'Authorization': `Bearer ${this.tokenService.getToken()}` }} );
     }
 }
