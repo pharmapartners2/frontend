@@ -20,12 +20,12 @@ export class PatientDetailComponent implements OnInit {
   ngOnInit(): void {
     const routeParams = this.route.snapshot.paramMap;
     const idFromRoute = Number(routeParams.get('patientId'));
-    this.loggingService.registerLogging(new Logging(this.tokenService.getIdfromToken(), "Patienten detail geopend", Date()));
+    this.loggingService.registerLogging(new Logging(this.tokenService.getIdfromToken(), "Patienten detail geopend", new Date()));
 
     this.patientService.getPatient(idFromRoute)
       .subscribe(response => {
         this._patient = response;
-        this.loggingService.registerLogging(new Logging(this.tokenService.getIdfromToken(), "Gegevens van patient " + this._patient.id + " opgehaald", Date()));
+        this.loggingService.registerLogging(new Logging(this.tokenService.getIdfromToken(), "Gegevens van patient " + this._patient.id + " opgehaald", new Date()));
         console.log("Gegevens van patient opgehaald: ", response)
       });
   }

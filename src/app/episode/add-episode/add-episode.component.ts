@@ -27,7 +27,7 @@ export class AddEpisodeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loggingService.registerLogging(new Logging(this.tokenService.getIdfromToken(), "Episode aanmaak-form geopend", Date()));
+    this.loggingService.registerLogging(new Logging(this.tokenService.getIdfromToken(), "Episode aanmaak-form geopend", new Date()));
 
     this.icpcCodeService.getAllIcpcCodes()
     .subscribe(response => {

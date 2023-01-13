@@ -3,8 +3,6 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { TokenService } from "../services/token.service";
 import { Router } from "@angular/router";
-import { HttpErrorResponse, HttpHeaderResponse, HttpResponse, HttpStatusCode } from '@angular/common/http';
-import { catchError, filter, Subject } from 'rxjs';
 import { LoggingService } from '../services/logging.service';
 import { Logging } from '../models/logging.model';
 
