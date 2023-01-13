@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { TokenService } from "./token.service";
-import { Episode } from "../models/episode.model";
+import {Episode, PostEpisode} from "../models/episode.model";
 
 @Injectable({
     providedIn: 'root'
@@ -17,4 +17,9 @@ export class EpisodeService {
     getEpisode(id: number) {
         return this.http.get<Episode[]>(this.onlinehostUrl + 'episode/' + id, { headers: { 'Authorization': `Bearer ${this.tokenService.getToken()}` } });
     }
+
+  postEpisode(episode: PostEpisode) {
+    return this.http.post<Episode>(this.onlinehostUrl + 'episode', episode,{ headers: { 'Authorization': `Bearer ${this.tokenService.getToken()}` } });
+  }
+
 }

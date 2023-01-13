@@ -56,14 +56,23 @@ export class EpisodeRegel {
 }
 
 export class PostEpisodeRegel {
+  get episodeId(): Number {
+    return this._episodeId;
+  }
+
+  set episodeId(value: Number) {
+    this._episodeId = value;
+  }
   private _code: string;
   private _beschrijving: string;
   private _datum: Date;
+  private _episodeId: Number
 
-  constructor(patientId: number, beschrijving: string, code: string, datum: Date) {
+  constructor(patientId: number, beschrijving: string, code: string, datum: Date, episodeId: number) {
     this._beschrijving = beschrijving;
     this._code = code;
     this._datum = datum;
+    this._episodeId = episodeId
   }
 
   get beschrijving(): string {
