@@ -14,9 +14,9 @@ export class AppointmentService {
   }
 
   getAppointments() {
-    return this.http.get<Array<Appointment>>(this.onlinehostUrl + 'appointment', {headers: {'Authorization': `Bearer ${this.tokenService.getToken()}`}});
+    return this.http.get<Array<Appointment>>(this.lclhostUrl + 'appointment', {headers: {'Authorization': `Bearer ${this.tokenService.getToken()}`}});
   }
   getAppointmentByUser(Id:number) {
-    return this.http.get<Array<Appointment>>(this.onlinehostUrl + 'appointment/' + Id, {headers: {'Authorization': `Bearer ${this.tokenService.getToken()}`}});
+    return this.http.get<Array<Appointment>>(this.lclhostUrl + 'appointment/' + Id, {headers: {'Authorization': `Bearer ${this.tokenService.getToken()}`}});
   }
 }

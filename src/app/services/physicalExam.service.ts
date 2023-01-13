@@ -15,6 +15,6 @@ export class PhysicalExamService {
     }
 
     getPhysicalExam(id: number) {
-        return this.http.get<PhysicalExam[]>(this.onlinehostUrl + 'PhysicalExam/' + id, { headers: { 'Authorization': `Bearer ${this.tokenService.getToken()}` } });
+        return this.http.get<PhysicalExam[]>(this.lclhostUrl + 'PhysicalExam/' + id, { headers: { 'Authorization': `Bearer ${this.tokenService.getToken()}` } });
     }
 }
