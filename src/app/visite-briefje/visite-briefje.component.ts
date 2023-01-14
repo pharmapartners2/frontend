@@ -10,7 +10,7 @@ import { MedicationPrescription } from "../models/medicationprescription.model";
 import { PhysicalExam } from '../models/physicalExam.model';
 import { PhysicalExamService } from '../services/physicalExam.service';
 import { Intolerantie } from '../models/intolerantie.model';
-import { Journal } from '../models/journal.model';
+import { EpisodeRegel } from '../models/EpisodeRegel.model';
 import { JournalService } from '../services/journal.service';
 import { IntolerantieService } from '../services/intolerantie.service';
 
@@ -24,7 +24,7 @@ export class VisiteBriefjeComponent implements OnInit {
   private _episode: Episode[];
   private _physicalExam: PhysicalExam[];
   private _medicationPrescriptions: MedicationPrescription[];
-  private _journal: Journal[];
+  private _journal: EpisodeRegel[];
   private _intolerantie: Intolerantie[];
   currentDateTime: string | null;
 
@@ -103,7 +103,7 @@ export class VisiteBriefjeComponent implements OnInit {
     return this._intolerantie;
   }
 
-  get journal(): Journal[] {
+  get journal(): EpisodeRegel[] {
     return this._journal;
   }
 

@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { TokenService } from "./token.service";
-import {Journal, PostJournal} from "../models/journal.model";
+import {EpisodeRegel, PostEpisodeRegel} from "../models/EpisodeRegel.model";
 import {environment} from "../../environments/environment";
 
 @Injectable({
@@ -14,9 +14,10 @@ export class JournalService {
     }
 
     getJournal(id: number) {
-        return this.http.get<Journal[]>(environment.api + 'journal/' + id, { headers: { 'Authorization': `Bearer ${this.tokenService.getToken()}` } });
+        return this.http.get<EpisodeRegel[]>(environment.api + 'journal/' + id, { headers: { 'Authorization': `Bearer ${this.tokenService.getToken()}` } });
     }
-    postJournal(journal: PostJournal) {
+
+    postJournalRegel(journal: PostEpisodeRegel) {
       return this.http.post(environment.api + 'journal', journal, { headers: { 'Authorization': `Bearer ${this.tokenService.getToken()}` }} );
     }
 }
