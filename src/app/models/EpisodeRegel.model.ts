@@ -56,46 +56,19 @@ export class EpisodeRegel {
 }
 
 export class PostEpisodeRegel {
-  get episodeId(): Number {
-    return this._episodeId;
-  }
 
-  set episodeId(value: Number) {
-    this._episodeId = value;
-  }
-  private _code: string;
-  private _beschrijving: string;
-  private _datum: Date;
-  private _episodeId: Number
+  private patientId: number;
+  private code: number;
+  private beschrijving: string;
+  private episodeId: number;
+  private datum: Date;
 
-  constructor(patientId: number, beschrijving: string, code: string, datum: Date, episodeId: number) {
-    this._beschrijving = beschrijving;
-    this._code = code;
-    this._datum = datum;
-    this._episodeId = episodeId
-  }
 
-  get beschrijving(): string {
-    return this._beschrijving;
-  }
-
-  get code(): string {
-    return this._code;
-  }
-
-  get datum(): Date {
-    return this._datum;
-  }
-
-  set beschrijving(value: string) {
-    this._beschrijving = value;
-  }
-
-  set code(value: string) {
-    this._code = value;
-  }
-
-  set datum(value: Date) {
-    this._datum = value;
+  constructor(patientId: number, code: number, beschrijving: string, episodeId: number, datum: Date) {
+    this.patientId = patientId;
+    this.code = code;
+    this.beschrijving = beschrijving;
+    this.episodeId = episodeId;
+    this.datum = datum;
   }
 }

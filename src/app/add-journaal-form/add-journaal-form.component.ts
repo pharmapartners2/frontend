@@ -109,7 +109,7 @@ export class AddJournaalFormComponent implements OnInit {
       let beschrijving = element.get('beschrijving')?.value;
       let code = element.get('code')?.value;
       let datum = element.get('datum')?.value;
-      let episodeRegel: PostEpisodeRegel = new PostEpisodeRegel(patientId, beschrijving, code, datum, episodeId)
+      let episodeRegel: PostEpisodeRegel = new PostEpisodeRegel(patientId, code, beschrijving, episodeId, datum)
       this.journaalService.postJournalRegel(episodeRegel).subscribe(
         result => {
 

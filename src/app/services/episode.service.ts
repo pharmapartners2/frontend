@@ -16,8 +16,7 @@ export class EpisodeService {
         return this.http.get<Episode[]>(environment.api + 'episode/' + id, { headers: { 'Authorization': `Bearer ${this.tokenService.getToken()}` } });
     }
 
-    postEpisode(patientId: number, datum: Date, beschrijving: String, icpcCode: icpcCode) {
-        const body = { patientId, datum, beschrijving, icpcCode };
-        return this.http.post<PostEpisode>(environment.api + 'episode', body, { headers: { 'Authorization': `Bearer ${this.tokenService.getToken()}`}});
+    postEpisode(episode: PostEpisode) {
+        return this.http.post<Episode>(environment.api + 'episode', episode, { headers: { 'Authorization': `Bearer ${this.tokenService.getToken()}`}});
     }
 }

@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { TokenService } from "./token.service";
-import {EpisodeRegel, PostEpisodeRegel} from "../models/journal.model";
+import {EpisodeRegel, PostEpisodeRegel} from "../models/EpisodeRegel.model";
 import {environment} from "../../environments/environment";
 
 @Injectable({
