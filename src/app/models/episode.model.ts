@@ -1,11 +1,10 @@
-import {EpisodeRegel} from "./EpisodeRegel.model";
-
 export class Episode {
     private _id: number;
     private _patientId: number;
     private _datum: Date;
     private _beschrijving: string;
     private _icpcCode: icpcCode;
+
 
     constructor(id: number, patientId: number, datum: Date, beschrijving: string, icpcCode: icpcCode, {
     }) {
@@ -128,5 +127,3 @@ export class PostEpisode {
   }
 
 }
-
-

@@ -21,6 +21,7 @@ import {MedicationService} from "./services/medication.service";
 import { AddJournaalFormComponent } from './add-journaal-form/add-journaal-form.component';
 import { AppointmentService} from "./services/appointment.service"
 import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
+import { AddEpisodeComponent } from './episode/add-episode/add-episode.component';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
     NavbarComponent,
     FooterComponent,
     AddJournaalFormComponent,
+    AddEpisodeComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,7 +45,6 @@ import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-
   ],
   providers: [DatePipe, AuthService, TokenService, PatientService, MedicationService, { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
     JwtHelperService],
