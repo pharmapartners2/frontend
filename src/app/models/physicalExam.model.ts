@@ -4,11 +4,14 @@ export class PhysicalExam {
     private _waarde: number;
     private _ddElement: ddElement;
 
-    constructor(id: number, datum: Date, waarde: number, ddElement: ddElement) {
+    private _patientid: number;
+
+    constructor(id: number, datum: Date, waarde: number, ddElement: ddElement, patientid: number) {
         this._id = id;
         this._datum = datum;
         this._waarde = waarde;
         this._ddElement = ddElement;
+        this._patientid = patientid;
     }
 
     get id(): number {
@@ -39,10 +42,66 @@ export class PhysicalExam {
         this._waarde = waarde;
     }
 
-    set ddElement(value: ddElement) {
+  get patientid(): number {
+    return this._patientid;
+  }
+
+  set patientid(value: number) {
+    this._patientid = value;
+  }
+
+  set ddElement(value: ddElement) {
         this._ddElement = value;
     }
 }
+
+export class PostPhysicalExam {
+  private _datum: Date;
+  private _waarde: number;
+  private _ddElement: ddElement;
+
+  private _patientid: number;
+
+  constructor(id: number, datum: Date, waarde: number, ddElement: ddElement, patientid: number) {
+    this._datum = datum;
+    this._waarde = waarde;
+    this._ddElement = ddElement;
+    this._patientid = patientid;
+  }
+
+  get datum(): Date {
+    return this._datum;
+  }
+
+  get waarde(): number {
+    return this._waarde;
+  }
+
+  get ddElement(): ddElement {
+    return this._ddElement;
+  }
+
+  set datum(value: Date) {
+    this._datum = value;
+  }
+
+  set waarde(waarde: number) {
+    this._waarde = waarde;
+  }
+
+  get patientid(): number {
+    return this._patientid;
+  }
+
+  set patientid(value: number) {
+    this._patientid = value;
+  }
+
+  set ddElement(value: ddElement) {
+    this._ddElement = value;
+  }
+}
+
 
 export class ddElement {
     private _id: number;

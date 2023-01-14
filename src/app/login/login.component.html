@@ -5,7 +5,7 @@
         <h5>Login</h5>
         <!-- Username input -->
         <div class="form-outline mb-4">
-          <label class="form-label" for="username">Gebruikersnaam: </label>
+          <label class="form-label" formControlName="username">Gebruikersnaam: </label>
           <input type="text" for="username" class="form-control" formControlName="username"
             [ngClass]="{'is-invalid':submitted} && loginForm.controls.username.errors">
           <div *ngIf="submitted && loginForm.controls.username.errors" class="error">
@@ -20,7 +20,7 @@
 
         <!-- Password input -->
         <div class="form-outline mb-4">
-          <label class="form-label" for="password">Wachtwoord: </label>
+          <label class="form-label" formControlName="password">Wachtwoord: </label>
           <input type="password" for="password" class="form-control" formControlName="password"
             [ngClass]="{'is-invalid':submitted} && loginForm.controls.password.errors">
           <div *ngIf="submitted && loginForm.controls.password.errors" class="error">
@@ -32,10 +32,10 @@
             </div>
           </div>
           <div *ngIf="submitted && err" class="error">
-              {{ err }} 
+              {{ err }}
           </div>
         </div>
-        
+
         <!-- Submit button -->
         <button type="submit" class="btn btn-primary btn-block mb-4" (click)="LogIn()">
           Sign in

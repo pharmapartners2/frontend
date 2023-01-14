@@ -1,0 +1,41 @@
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Voeg een lichamelijk onderzoek toe</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="physicalExamForm">
+      <div class="mb-3">
+        <label type="text">
+          Datum:
+          <input type="date" formControlName="datum" class="form-control">
+        </label>
+      </div>
+      <div class="mb-3">
+        <label type="number">
+          Waarde in kg:
+          <input type="text" formControlName="waarde" class="form-control">
+        </label>
+      </div>
+      <div class="mb-3">
+        <label type="number">
+          DDElement:
+          <input type="text" formControlName="ddelement" class="form-control">
+        </label>
+      </div>
+
+      <div *ngIf="submitted && err" class="error">
+        {{ err }}
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-block mb-4" (click)="submitForm()">
+        Voeg toe
+      </button>
+    </form>
+  </div>
+  <div class="modal-footer">
+  </div>
+</ng-template>
+<button class="btn btn-primary btn-block mb-4" (click)="open(content)"><i class="fa fa-fw fa-plus"></i> Voeg een
+  lichamelijk onderzoek toe
+</button>

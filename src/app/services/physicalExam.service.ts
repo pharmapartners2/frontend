@@ -15,4 +15,8 @@ export class PhysicalExamService {
     getPhysicalExam(id: number) {
         return this.http.get<PhysicalExam[]>(environment.api + 'PhysicalExam/' + id, { headers: { 'Authorization': `Bearer ${this.tokenService.getToken()}` } });
     }
+
+    createPhysicalExam(datum:string, waarde:number, ddelement:number, patientid:number) {
+      return this.http.post(environment.api + "physicalexam", {patientId:patientid, datum:datum, waarde:waarde, ddElementId:ddelement }, { headers: { 'Authorization': `Bearer ${this.tokenService.getToken()}` } })
+    }
 }
