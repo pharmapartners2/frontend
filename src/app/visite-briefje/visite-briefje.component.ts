@@ -13,6 +13,9 @@ import { Intolerantie } from '../models/intolerantie.model';
 import { EpisodeRegel } from '../models/EpisodeRegel.model';
 import { JournalService } from '../services/journal.service';
 import { IntolerantieService } from '../services/intolerantie.service';
+import {Logging} from "../models/logging.model";
+import {LoggingService} from "../services/logging.service";
+import {TokenService} from "../services/token.service";
 
 @Component({
   selector: 'app-visite-briefje',
@@ -36,7 +39,7 @@ export class VisiteBriefjeComponent implements OnInit {
     private episodeService: EpisodeService,
     private journalService: JournalService,
     private intolerantieService: IntolerantieService,
-    private physicalExamService: PhysicalExamService) {
+    private physicalExamService: PhysicalExamService, private loggingService: LoggingService, private tokenService: TokenService) {
       this.currentDateTime = this.datepipe.transform(new Date(), 'dd-MM-yyyy');
   }
 
@@ -48,6 +51,11 @@ export class VisiteBriefjeComponent implements OnInit {
     .subscribe(response => {
       this._journal = response;
       console.log("Patient: ", response)
+      let currentDate = new Date();
+      this.loggingService.registerLogging(new Logging(this.tokenService.getIdfromToken(), "Gebruiker " + this.tokenService.getIdfromToken().toString() + " heeft dossier geopend van patient met id: " + idFromRoute, currentDate ))
+        .subscribe(response => {
+          console.log("logged login", response);
+        });
     });
 
     this.intolerantieService.getIntolerantie(idFromRoute)

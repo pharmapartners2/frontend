@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, AfterViewInit } from '@angular/core';
+import {Component, OnInit, OnChanges, AfterViewInit, SimpleChanges} from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { AppointmentService } from '../services/appointment.service';
 import { Patient } from '../models/patient.model';
@@ -171,5 +171,4 @@ export class OverviewComponent implements OnInit {
   get appointmentsByUserFiltered(): Appointment[] {
     return this._appointmentsByUserFiltered;
   }
-
 }

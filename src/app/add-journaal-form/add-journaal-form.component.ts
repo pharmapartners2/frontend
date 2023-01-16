@@ -7,6 +7,9 @@ import {NgbModal, NgbModalConfig} from "@ng-bootstrap/ng-bootstrap";
 import {EpisodeRegel, PostEpisodeRegel} from "../models/EpisodeRegel.model";
 import {EpisodeService} from "../services/episode.service";
 import {PostEpisode} from "../models/episode.model";
+import {Logging} from "../models/logging.model";
+import {LoggingService} from "../services/logging.service";
+import {TokenService} from "../services/token.service";
 
 @Component({
   selector: 'app-add-journaal-form',
@@ -17,7 +20,7 @@ export class AddJournaalFormComponent implements OnInit {
   private _patients: Patient[];
   private _episodeForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private patientService: PatientService, config: NgbModalConfig, private modalService: NgbModal, private episodeService: EpisodeService, private journaalService: JournalService) {
+  constructor(private fb: FormBuilder, private patientService: PatientService, config: NgbModalConfig, private modalService: NgbModal, private episodeService: EpisodeService, private journaalService: JournalService, private loggingService: LoggingService, private tokenService: TokenService) {
     config.backdrop = 'static'
   }
 
@@ -101,6 +104,11 @@ export class AddJournaalFormComponent implements OnInit {
   postEpisode(episode: PostEpisode, episodeIndex: number, patientId: number) {
     this.episodeService.postEpisode(episode).subscribe((result) => {
       this.postJournalLine(episodeIndex, result.id, patientId)
+      let currentDate = new Date();
+      this.loggingService.registerLogging(new Logging(this.tokenService.getIdfromToken(), "Gebruiker " + this.tokenService.getIdfromToken().toString() + " heeft episode aangemaakt met episodeId: " + result.id, currentDate ))
+        .subscribe(response => {
+          console.log("logged login", response);
+        });
     })
   }
 

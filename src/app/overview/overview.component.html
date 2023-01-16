@@ -20,7 +20,7 @@
           class="dropdown-users selected"
           [(ngModel)]="userFromDropdown"
         >
-          <option *ngFor="let user of users">{{ user.id }}</option>
+          <option [value]="user.id" *ngFor="let user of users">{{ user.username }}</option>
         </select>
         <button (click)="FetchDateSelected()" class="btn btn-primary btn-block">
           Kies datum
