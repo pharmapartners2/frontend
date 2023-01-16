@@ -80,3 +80,17 @@ export class icpcCode {
     }
 
 }
+
+export class PostEpisode {
+  private patientId: number;
+  private datum: Date;
+  private beschrijving: string;
+  private icpccode: number;
+
+  constructor(patientId: number, datum: Date, beschrijving: string, icpccode: number) {
+    this.patientId = patientId;
+    this.datum = datum;
+    this.beschrijving = beschrijving;
+    this.icpccode = icpccode;
+  }
+}

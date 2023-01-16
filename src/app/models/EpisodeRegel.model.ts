@@ -1,4 +1,4 @@
-export class Journal {
+export class EpisodeRegel {
     private _id: number;
     private _patientId: number;
     private _code: string;
@@ -6,8 +6,7 @@ export class Journal {
     private _datum: Date;
 
 
-    constructor(id: number, patientId: number, beschrijving: string, code: string, datum: Date, {
-    }) {
+    constructor(id: number, patientId: number, beschrijving: string, code: string, datum: Date) {
         this._id = id;
         this._patientId = patientId;
         this._beschrijving = beschrijving;
@@ -54,4 +53,22 @@ export class Journal {
     set datum(value: Date) {
         this._datum = value;
     }
+}
+
+export class PostEpisodeRegel {
+
+  private patientId: number;
+  private code: number;
+  private beschrijving: string;
+  private episodeId: number;
+  private datum: Date;
+
+
+  constructor(patientId: number, code: number, beschrijving: string, episodeId: number, datum: Date) {
+    this.patientId = patientId;
+    this.code = code;
+    this.beschrijving = beschrijving;
+    this.episodeId = episodeId;
+    this.datum = datum;
+  }
 }

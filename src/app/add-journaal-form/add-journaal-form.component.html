@@ -1,0 +1,76 @@
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Voeg episode toe</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="episodeForm">
+      <div class="mb-3">
+        <label class="form-label">Patient:</label>
+        <select class="form-select" formControlName="selectedPatientId">
+          <option *ngFor="let patient of patients" [ngValue]="patient.id"> {{patient.naam}} </option>
+        </select>
+      </div>
+      <div class="container-fluid">
+        <div class="row">
+          <button class="btn btn-primary mb-2" (click)="addEpisode()">Voeg episode toe</button>
+        </div>
+
+        <div formArrayName="episodes">
+          <div *ngFor="let episode of episodes().controls; let episodeIndex = index">
+            <div [formGroupName]="episodeIndex">
+              <div class="card">
+                <div class="card-header">
+                  <button class="btn btn-primary" type="submit" (click)="removeEpisode(episodeIndex) ">Remove</button>
+                </div>
+                <div class="card-body m-2">
+                  <div class="row mb-1">
+                    <input formControlName="beschrijving" id="{{episodeIndex}}" type="text" class="form-control"
+                           placeholder="Beschrijving van episode"/>
+                  </div>
+                  <div class="row mb-1">
+                    <input formControlName='datum' id="{{episodeIndex}}" type="date" class="form-control"
+                           placeholder="Datum"/>
+                  </div>
+                  <div class="row mb-1">
+                    <input formControlName='code' id="{{episodeIndex}}" type="number" class="form-control"
+                           placeholder="Code"/>
+                  </div>
+                </div>
+              </div>
+              <button class="btn btn-primary mb-2" (click)="addEpisodeRegel(episodeIndex)">Voeg regel toe</button>
+              <div formArrayName="regels">
+                <div *ngFor="let regel of episodeRegels(episodeIndex).controls; let regelIndex = index">
+                  <div [formGroupName]="regelIndex">
+                    <div class="card">
+                      <div class="card-header">
+                        <button class="btn btn-primary" type="submit" (click)="removeRegel(episodeIndex, regelIndex) ">
+                          Remove
+                        </button>
+                      </div>
+                      <div class="card-body m-2">
+                        <div class="row mb-1">
+                          <input formControlName="beschrijving" type="text" class="form-control"
+                                 placeholder="Beschrijving van episode"/>
+                        </div>
+                        <div class="row mb-1">
+                          <input formControlName='datum' type="date" class="form-control" placeholder="Datum"/>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-primary" [disabled]="!episodeForm.valid" (click)="submitForm()">Voeg
+      episode toe
+    </button>
+  </div>
+</ng-template>
+<button class="btn btn-primary" (click)="open(content)"> Voeg episode toe</button>

@@ -10,28 +10,28 @@ import { MedicationPrescription } from "../models/medicationprescription.model";
 import { PhysicalExam } from '../models/physicalExam.model';
 import { PhysicalExamService } from '../services/physicalExam.service';
 import { Intolerantie } from '../models/intolerantie.model';
-import { Journal } from '../models/journal.model';
+import { EpisodeRegel } from '../models/EpisodeRegel.model';
 import { JournalService } from '../services/journal.service';
 import { IntolerantieService } from '../services/intolerantie.service';
 
 @Component({
   selector: 'app-visite-briefje',
   templateUrl: './visite-briefje.component.html',
-  styleUrls: ['./visite-briefje.component.css']
+  styleUrls: ['./visite-briefje.component.css'],
 })
 export class VisiteBriefjeComponent implements OnInit {
   private _patient: Patient;
   private _episode: Episode[];
   private _physicalExam: PhysicalExam[];
   private _medicationPrescriptions: MedicationPrescription[];
-  private _journal: Journal[];
+  private _journal: EpisodeRegel[];
   private _intolerantie: Intolerantie[];
   currentDateTime: string | null;
 
   constructor(
-    private patientService: PatientService, 
-    private route: ActivatedRoute, 
-    private datepipe: DatePipe, 
+    private patientService: PatientService,
+    private route: ActivatedRoute,
+    private datepipe: DatePipe,
     private medicationService: MedicationService,
     private episodeService: EpisodeService,
     private journalService: JournalService,
@@ -81,6 +81,8 @@ export class VisiteBriefjeComponent implements OnInit {
       });
   }
 
+
+
   get patient(): Patient {
     return this._patient;
   }
@@ -101,7 +103,7 @@ export class VisiteBriefjeComponent implements OnInit {
     return this._intolerantie;
   }
 
-  get journal(): Journal[] {
+  get journal(): EpisodeRegel[] {
     return this._journal;
   }
 

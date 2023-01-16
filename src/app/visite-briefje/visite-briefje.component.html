@@ -2,24 +2,19 @@
   <div class="container-body">
     <div class="m-2">
       <div class="card text-center mb-2" *ngIf="patient">
-
         <div class="card-header">
           Visitebriefje van {{ patient.naam }}
         </div>
-
         <div class="card-body">
           <h5>Naam: {{ patient.naam }}</h5>
           <h5>Adres: {{ patient.adres }}</h5>
           <h5>Geb.datum: {{patient.geboorteDatum | date}}</h5>
           <h5>BSN: {{ patient.bsn }}</h5>
           <h5>Tel.nr: {{ patient.telefoonNr}}</h5>
-
         </div>
       </div>
 
-
       <div class="accordion" id="accordionExample">
-
         <div class="accordion-item">
           <h2 class="accordion-header" id="headingOne">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -30,7 +25,6 @@
           <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
             data-bs-parent="#accordionExample">
             <div class="accordion-body">
-              <button class="btn btn-primary btn-block mb-4"><i class="fa fa-fw fa-plus"></i> Voeg episode toe </button>
               <div>
                 <div class="card mb-2" *ngFor="let episode of episode">
                   <div class="card-header">
@@ -60,7 +54,6 @@
           <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
             data-bs-parent="#accordionExample">
             <div class="accordion-body">
-              <button class="btn btn-primary btn-block mb-4"><i class="fa fa-fw fa-plus"></i> Voeg journal toe </button>
               <div *ngFor="let journal of journal">
                 <div class="card mb-2">
                   <div class="card-header">
