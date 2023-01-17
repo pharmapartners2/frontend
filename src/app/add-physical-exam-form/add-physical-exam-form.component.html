@@ -14,14 +14,23 @@
       <div class="mb-3">
         <label class="form-label" type="number">
           Waarde van de eenheid:</label>
-          <input type="text" formControlName="waarde" class="form-control" class="form-control">
-
+        <input type="text" formControlName="waarde" class="form-control" class="form-control">
       </div>
       <div class="mb-3">
         <label class="form-label">DDElement:</label>
-        <select class="form-select" formControlName="ddelement">
-          <option *ngFor="let ddelement of ddelements" [ngValue]="ddelement.id"> {{ddelement.naam}} </option>
-        </select>
+        <app-search-ddelement (searchTextChanged)="onSearchTextChanged($event)"></app-search-ddelement>
+        <div style="overflow-y: scroll; height:400px; width: auto">
+          <ng-container *ngFor="let ddelement of ddelements; let i = index;">
+            <div *ngIf="searchText === '' || ddelement.naam.toLowerCase().includes(searchText)">
+
+              <ul class="list-group">
+                <li class="list-group-item list-group-item-action" [class.active]="active === i"
+                    (click)="onClick(i, ddelement.id)" [value]="ddelement.id"> {{ddelement.naam }} </li>
+              </ul>
+            </div>
+
+          </ng-container>
+        </div>
       </div>
 
       <div *ngIf="submitted && err" class="error">

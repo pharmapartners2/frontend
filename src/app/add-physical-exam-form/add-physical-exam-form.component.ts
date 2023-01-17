@@ -17,6 +17,7 @@ export class AddPhysicalExamFormComponent implements OnInit {
   physicalExamForm: FormGroup;
   submitted= false;
   err: string;
+  ddelementId: number;
 
   private _ddelements: ddElement[];
 
@@ -37,7 +38,6 @@ export class AddPhysicalExamFormComponent implements OnInit {
     this.physicalExamForm = this.formBuilder.group({
       datum: ['', Validators.required],
       waarde: ['', Validators.required],
-      ddelement: ['', Validators.required],
     })
     const routeParams = this.route.snapshot.paramMap;
     this.patientId = Number(routeParams.get('patientId'));
@@ -47,7 +47,19 @@ export class AddPhysicalExamFormComponent implements OnInit {
         this._ddelements = response;
       });
   }
+  searchText: string = '';
+  onSearchTextChanged(searchValue:string) {
+    this.searchText = searchValue;
+    //console.log(this.searchText);
+  }
 
+  isActive = false;
+  active: number;
+
+  onClick(index: number, ddelementId: number) {
+    this.active = index;
+    this.ddelementId = ddelementId;
+  }
   get ddelements(): ddElement[] {
     return this._ddelements;
   }
@@ -63,10 +75,6 @@ export class AddPhysicalExamFormComponent implements OnInit {
       return console.log("Variablen missen", this.physicalExamForm.value);
     }
 
-    const ddelement = parseInt(this.physicalExamForm.value.ddelement)
-    if(isNaN(ddelement)){
-      console.log("ddelement not entered")
-    }
 
     const waarde = parseInt(this.physicalExamForm.value.waarde)
     if(isNaN(waarde)){
@@ -76,10 +84,9 @@ export class AddPhysicalExamFormComponent implements OnInit {
       console.log("Waarde is niet gezond genoeg")
     }
 
-    this.physicalExamService.createPhysicalExam(this.physicalExamForm.value.datum, waarde, ddelement, this.patientId)
+    this.physicalExamService.createPhysicalExam(this.physicalExamForm.value.datum, waarde, this.ddelementId, this.patientId)
       .subscribe(response => {
         console.log("lichamelijk onderzoek wordt aangemaakt");
-        //this.router.navigate(['/patient/' + this.patientId])
         this.modalService.dismissAll()
       },
         error => {

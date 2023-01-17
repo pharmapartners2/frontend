@@ -22,6 +22,7 @@ import { AddJournaalFormComponent } from './add-journaal-form/add-journaal-form.
 import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
 import { AddEpisodeComponent } from './episode/add-episode/add-episode.component';
 import { AddPhysicalExamFormComponent } from './add-physical-exam-form/add-physical-exam-form.component';
+import { SearchDdelementComponent } from './search-ddelement/search-ddelement.component';
 
 
 @NgModule({
@@ -38,6 +39,7 @@ import { AddPhysicalExamFormComponent } from './add-physical-exam-form/add-physi
     AddJournaalFormComponent,
     AddEpisodeComponent,
     AddPhysicalExamFormComponent,
+    SearchDdelementComponent,
   ],
   imports: [
     BrowserModule,
