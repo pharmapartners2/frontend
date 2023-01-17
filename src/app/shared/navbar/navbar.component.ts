@@ -23,8 +23,8 @@ export class NavbarComponent implements OnInit {
 
   logout() {
     this.tokenService.deleteToken();
+    location.href = '/login';
     this.footerService.hide();
     this.navbarService.hide();
-    this.router.navigate(['/login'])
   }
 }

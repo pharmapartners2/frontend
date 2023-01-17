@@ -13,7 +13,7 @@ import { RegisterComponent } from './register/register.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AuthService} from "./services/auth.service";
 import {TokenService} from "./services/token.service";
 import {PatientService} from "./services/patient.service";
@@ -46,7 +46,11 @@ import { EpisodeDetailComponent } from './episode-detail/episode-detail.componen
     ReactiveFormsModule,
   ],
   providers: [DatePipe, AuthService, TokenService, PatientService, MedicationService, { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
-    JwtHelperService],
-  bootstrap: [AppComponent]
+    JwtHelperService, {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenService,
+      multi: true
+    }],
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

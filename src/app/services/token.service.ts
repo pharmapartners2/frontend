@@ -70,7 +70,7 @@ export class TokenService implements HttpInterceptor {
           }
           this.navbarService.hide();
           this.footerService.hide();
-          this.router.navigate(['login']);
+          location.href = '/login';
         }
       }));
   }
