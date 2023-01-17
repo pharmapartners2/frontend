@@ -17,6 +17,10 @@ export class JournalService {
         return this.http.get<EpisodeRegel[]>(environment.api + 'journal/' + id, { headers: { 'Authorization': `Bearer ${this.tokenService.getToken()}` } });
     }
 
+    getJournalByEpisode(episodeId: number) {
+      return this.http.get<EpisodeRegel[]>(environment.api + 'episode/journal/' + episodeId, { headers: { 'Authorization': `Bearer ${this.tokenService.getToken()}` } })
+    }
+
     postJournalRegel(journal: PostEpisodeRegel) {
       return this.http.post(environment.api + 'journal', journal, { headers: { 'Authorization': `Bearer ${this.tokenService.getToken()}` }} );
     }

@@ -6,10 +6,7 @@
   <div class="modal-body">
     <form [formGroup]="episodeForm">
       <div class="mb-3">
-        <label class="form-label">Patient:</label>
-        <select class="form-select" formControlName="selectedPatientId">
-          <option *ngFor="let patient of patients" [ngValue]="patient.id"> {{patient.naam}} </option>
-        </select>
+        <input type="hidden" formControlName="selectedPatientId" [ngModel]="patientId">
       </div>
       <div class="container-fluid">
         <div class="row">
@@ -19,11 +16,11 @@
         <div formArrayName="episodes">
           <div *ngFor="let episode of episodes().controls; let episodeIndex = index">
             <div class="card mb-4 shadow p-3 bg-body rounded">
-            <div [formGroupName]="episodeIndex">
-
+              <div [formGroupName]="episodeIndex">
                 <div class="card-header d-flex justify-content-between align-items-center">
                   Episode
-                  <button class="btn btn-primary btn-sm" type="submit" (click)="removeEpisode(episodeIndex) ">Remove</button>
+                  <button class="btn btn-primary btn-sm" type="submit" (click)="removeEpisode(episodeIndex) ">Remove
+                  </button>
                 </div>
                 <div class="card-body m-2">
                   <div class="row mb-1">
@@ -39,26 +36,27 @@
                            placeholder="ICPC Code"/>
                   </div>
                 </div>
-              </div>
-              <button class="btn btn-primary m-2" (click)="addEpisodeRegel(episodeIndex)">Voeg regel toe</button>
-              <div formArrayName="regels">
-                <div *ngFor="let regel of episodeRegels(episodeIndex).controls; let regelIndex = index">
-                  <div [formGroupName]="regelIndex">
-                    <div class="card m-2">
-                      <div class="card-header d-flex justify-content-between align-items-center">
-                        Journaalregel
-                        <button class="btn btn-primary btn-sm" type="submit"
-                                (click)="removeRegel(episodeIndex, regelIndex) ">
-                          Remove
-                        </button>
-                      </div>
-                      <div class="card-body m-2">
-                        <div class="row mb-1">
-                          <input formControlName="beschrijving" type="text" class="form-control"
-                                 placeholder="Beschrijving van episode"/>
+
+                <button class="btn btn-primary m-2" (click)="addEpisodeRegel(episodeIndex)">Voeg regel toe</button>
+                <div formArrayName="regels">
+                  <div *ngFor="let regel of episodeRegels(episodeIndex).controls; let regelIndex = index">
+                    <div [formGroupName]="regelIndex">
+                      <div class="card m-2">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                          Journaalregel
+                          <button class="btn btn-primary btn-sm" type="submit"
+                                  (click)="removeRegel(episodeIndex, regelIndex) ">
+                            Remove
+                          </button>
                         </div>
-                        <div class="row mb-1">
-                          <input formControlName='datum' type="date" class="form-control" placeholder="Datum"/>
+                        <div class="card-body m-2">
+                          <div class="row mb-1">
+                            <input formControlName="beschrijving" type="text" class="form-control"
+                                   placeholder="Beschrijving van episode"/>
+                          </div>
+                          <div class="row mb-1">
+                            <input formControlName='datum' type="date" class="form-control" placeholder="Datum"/>
+                          </div>
                         </div>
                       </div>
                     </div>

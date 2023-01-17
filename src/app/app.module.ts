@@ -22,6 +22,7 @@ import { AddJournaalFormComponent } from './add-journaal-form/add-journaal-form.
 import { AppointmentService} from "./services/appointment.service"
 import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
 import { AddEpisodeComponent } from './episode/add-episode/add-episode.component';
+import { EpisodeDetailComponent } from './episode-detail/episode-detail.component';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import { AddEpisodeComponent } from './episode/add-episode/add-episode.component
     FooterComponent,
     AddJournaalFormComponent,
     AddEpisodeComponent,
+    EpisodeDetailComponent,
   ],
   imports: [
     BrowserModule,
