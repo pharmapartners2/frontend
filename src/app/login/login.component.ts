@@ -5,6 +5,8 @@ import { TokenService } from "../services/token.service";
 import { Router } from "@angular/router";
 import { LoggingService } from '../services/logging.service';
 import { Logging } from '../models/logging.model';
+import {NavbarService} from "../services/navbar.service";
+import {FooterService} from "../services/footer.service";
 
 @Component({
   selector: 'app-login',
@@ -22,6 +24,8 @@ export class LoginComponent implements OnInit {
     private loggingService: LoggingService,
     private router: Router,
     private formBuilder: FormBuilder,
+    private navbarService: NavbarService,
+    private footerService: FooterService
   ) { }
 
   ngOnInit(): void {
@@ -29,6 +33,8 @@ export class LoginComponent implements OnInit {
       username: ['', [Validators.required, Validators.pattern('^[a-zA-Z]*')]],
       password: ['', [Validators.required, Validators.minLength(4)]]
     })
+    this.navbarService.hide();
+    this.footerService.hide();
   }
 
   LogIn() {

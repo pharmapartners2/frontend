@@ -19,9 +19,7 @@ import {TokenService} from "./services/token.service";
 import {PatientService} from "./services/patient.service";
 import {MedicationService} from "./services/medication.service";
 import { AddJournaalFormComponent } from './add-journaal-form/add-journaal-form.component';
-import { AppointmentService} from "./services/appointment.service"
 import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
-import { AddEpisodeComponent } from './episode/add-episode/add-episode.component';
 import { EpisodeDetailComponent } from './episode-detail/episode-detail.component';
 
 
@@ -37,7 +35,6 @@ import { EpisodeDetailComponent } from './episode-detail/episode-detail.componen
     NavbarComponent,
     FooterComponent,
     AddJournaalFormComponent,
-    AddEpisodeComponent,
     EpisodeDetailComponent,
   ],
   imports: [
