@@ -1,0 +1,21 @@
+<ng-template #episodeModal let-modal>
+  <div class="modal-header">
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <div *ngFor="let regel of episodeRegels">
+      <div class="card">
+        <div class="card-header">
+          {{regel.beschrijving}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+
+  </div>
+</ng-template>
+
+<button (click)="openEpisode(episodeModal)" class="btn btn-primary stretched-link">
+  Open
+</button>
