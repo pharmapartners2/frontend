@@ -4,6 +4,8 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {PatientService} from "../services/patient.service";
 import {PhysicalExamService} from "../services/physicalExam.service";
+import {ddElement} from "../models/physicalExam.model";
+import {DDElementService} from "../services/ddelement.service";
 @Component({
   selector: 'app-add-physical-exam-form',
   templateUrl: './add-physical-exam-form.component.html',
@@ -16,6 +18,8 @@ export class AddPhysicalExamFormComponent implements OnInit {
   submitted= false;
   err: string;
 
+  private _ddelements: ddElement[];
+
   constructor(
     private formBuilder: FormBuilder,
     private patientService: PatientService,
@@ -23,7 +27,8 @@ export class AddPhysicalExamFormComponent implements OnInit {
     private modalService: NgbModal,
     private physicalExamService: PhysicalExamService,
     private router: Router,
-    private route: ActivatedRoute)
+    private route: ActivatedRoute,
+    private ddelementService: DDElementService)
   {
     config.backdrop = 'static'
   }
@@ -36,6 +41,15 @@ export class AddPhysicalExamFormComponent implements OnInit {
     })
     const routeParams = this.route.snapshot.paramMap;
     this.patientId = Number(routeParams.get('patientId'));
+
+    this.ddelementService.getDDElement()
+      .subscribe(response => {
+        this._ddelements = response;
+      });
+  }
+
+  get ddelements(): ddElement[] {
+    return this._ddelements;
   }
 
   open(content: any) {
