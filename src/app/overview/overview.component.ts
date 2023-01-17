@@ -38,9 +38,8 @@ export class OverviewComponent implements OnInit {
     private tokenService: TokenService,
     private router: Router,
     private authService: AuthService,
-    private patientService: PatientService,
-    private footerService: FooterService,
-    private navbarService: NavbarService
+    private patientService: PatientService
+
   ) {
     this.currentDateTime = this.datepipe.transform(new Date(), 'dd-MM-yyyy');
     this._appointments = Array<Appointment>();
@@ -52,12 +51,6 @@ export class OverviewComponent implements OnInit {
     this._appointmentsByUserFiltered = Array<Appointment>();
   }
   ngOnInit(): void {
-    this.navbarService.show();
-    this.footerService.show();
-    if (!this.tokenService.isValidToken()) {
-      this.authService.logout();
-      this.router.navigate(['/login']);
-    }
     this.patientService.getPatients().subscribe((response) => {
       this._patients = response;
       console.log('Patiënten opgehaald: ', response);

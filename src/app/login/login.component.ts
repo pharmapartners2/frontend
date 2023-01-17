@@ -49,6 +49,8 @@ export class LoginComponent implements OnInit {
       .subscribe(response => {
         console.log("Ingelogd door gebruiker: ", this.loginForm.value.username, response)
         this.tokenService.set('jwt', response.toString());
+        this.footerService.show();
+        this.navbarService.show();
         let currentDate = new Date();
         this.loggingService.registerLogging(new Logging(this.tokenService.getIdfromToken(), "Gebruiker " + this.tokenService.getIdfromToken().toString() + " ingelogd", currentDate))
           .subscribe(response => {

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {TokenService} from "../../services/token.service";
 import {NavbarService} from "../../services/navbar.service";
 import {Router} from "@angular/router";
+import {FooterService} from "../../services/footer.service";
 
 @Component({
   selector: 'app-navbar',
@@ -10,7 +11,7 @@ import {Router} from "@angular/router";
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private tokenService: TokenService, private router: Router, public navbarService: NavbarService) { }
+  constructor(private tokenService: TokenService, private router: Router, public navbarService: NavbarService, private footerService: FooterService) { }
 
   ngOnInit(): void {
 
@@ -22,6 +23,8 @@ export class NavbarComponent implements OnInit {
 
   logout() {
     this.tokenService.deleteToken();
+    this.footerService.hide();
+    this.navbarService.hide();
     this.router.navigate(['/login'])
   }
 }
