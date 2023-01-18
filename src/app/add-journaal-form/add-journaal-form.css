@@ -1,0 +1,23 @@
+.btn {
+  text-align: center;
+  background-color: #ed1e79;
+  border-color: #ed1e79;
+  margin: 0px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.btn:hover,
+.btn:active {
+  background-color: #bd1f64;
+  border-color: #bd1f64;
+}
+
+h1 {
+  font-size: 30px;
+}
+
+a {
+  color: #ed1e79;
+  text-decoration-color: #ed1e79;
+}

@@ -7,7 +7,7 @@ export class Patient {
   private _telefoonNr: string;
 
 
-  constructor(id: number, naam: string, adres: string, geboorteDatum: Date, bsn: string, telefoonNr: string) {
+  constructor(id: number, naam: string, geboorteDatum: Date, bsn: string, telefoonNr: string, adres: string) {
     this._id = id;
     this._naam = naam;
     this._adres = adres;

@@ -17,6 +17,8 @@ import {Logging} from "../models/logging.model";
 import {LoggingService} from "../services/logging.service";
 import {TokenService} from "../services/token.service";
 import {NgbModal, NgbModalConfig} from "@ng-bootstrap/ng-bootstrap";
+import { NavbarService } from '../services/navbar.service';
+import { FooterService } from '../services/footer.service';
 
 @Component({
   selector: 'app-visite-briefje',
@@ -40,11 +42,15 @@ export class VisiteBriefjeComponent implements OnInit {
     private episodeService: EpisodeService,
     private journalService: JournalService,
     private intolerantieService: IntolerantieService,
+    private nav: NavbarService,
+    private footer: FooterService,
     private physicalExamService: PhysicalExamService, private loggingService: LoggingService, private tokenService: TokenService) {
       this.currentDateTime = this.datepipe.transform(new Date(), 'dd-MM-yyyy');
   }
 
   ngOnInit(): void {
+    this.nav.show();
+    this.footer.show();
     const routeParams = this.route.snapshot.paramMap;
     const idFromRoute = Number(routeParams.get('patientId'));
 

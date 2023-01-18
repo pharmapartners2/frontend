@@ -15,6 +15,7 @@ import {IcpcCodeService} from "../services/icpcCode.service";
 @Component({
   selector: 'app-add-journaal-form',
   templateUrl: './add-journaal-form.component.html',
+  styleUrls: ['./add-journaal-form.css'],
 })
 export class AddJournaalFormComponent implements OnInit {
   get icpcCodes(): icpcCode[] {
