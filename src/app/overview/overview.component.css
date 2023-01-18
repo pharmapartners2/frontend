@@ -64,19 +64,41 @@ td{
 
 select.dropdown-users, select.dropdown-users:focus, select.dropdown-users:active {
   width: fit-content;
-
   cursor: pointer !important;
   background-color: white;
 }
 
-.datepicker {
-  width: 80%;
-  margin-left: auto;
-  margin-right: auto;
+
+.optie-knoppen{
   display: flex;
-  justify-content: center;
   align-items: center;
-  border: none !important;
-  cursor: pointer !important;
+  align-self: center;
+  align-content: center;
+  justify-content: center;
 }
 
+.datepicker {
+  margin: 5px;
+  font-size: 14px;
+  height: auto;
+}
+
+.select-knop{
+  margin: 5px;
+  font-size: 15.55px;
+  padding: 1px;
+  height: auto;
+}
+
+.btn-knop{
+  font-size: 10px;
+  height: fit-content;
+  color: white;
+  margin: 5px;
+  padding: 0px;
+  border: none;
+  background-color: #bd1f64;
+  box-decoration-break: none;
+  border-width: 1px;
+  border-radius: 5px;
+}
