@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  api: 'https://pharmapartnersapi.azurewebsites.net/'
+  //api: 'https://pharmapartnersapi.azurewebsites.net/'
+  api: 'http://localhost:8080/'
 };
 
 /*
