@@ -23,6 +23,7 @@ import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
 import { AddPhysicalExamFormComponent } from './add-physical-exam-form/add-physical-exam-form.component';
 import { SearchDdelementComponent } from './search-ddelement/search-ddelement.component';
 import {EpisodeDetailComponent} from "./episode-detail/episode-detail.component";
+import {MedicatieToevoegenComponent} from "./medicatie/medicatie-toevoegen/medicatie-toevoegen.component";
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import {EpisodeDetailComponent} from "./episode-detail/episode-detail.component"
     EpisodeDetailComponent,
     AddPhysicalExamFormComponent,
     SearchDdelementComponent,
+    MedicatieToevoegenComponent
   ],
   imports: [
     BrowserModule,

@@ -66,6 +66,52 @@ export class MedicationPrescription {
   }
 }
 
+export class postMedicationPrescription {
+  private _patientId: number;
+  private _datum: Date;
+  private _beschrijving: string;
+  private _bpCode: number;
+
+  constructor(patientId: number, datum: Date, beschrijving: string, bpCode: number) {
+    this._patientId = patientId;
+    this._datum = datum;
+    this._beschrijving = beschrijving;
+    this._bpCode = bpCode;
+  }
+
+  get patientId(): number {
+    return this._patientId;
+  }
+
+  get datum(): Date {
+    return this._datum;
+  }
+
+  get beschrijving(): string {
+    return this._beschrijving;
+  }
+
+  get bpCode(): number {
+    return this._bpCode;
+  }
+
+  set patientId(value: number) {
+    this._patientId = value;
+  }
+
+  set datum(value: Date) {
+    this._datum = value;
+  }
+
+  set beschrijving(value: string) {
+    this._beschrijving = value;
+  }
+
+  set bpCode(value: number) {
+    this._bpCode = value;
+  }
+}
+
 export class Medication {
   private _id: number;
   private _bp: number;

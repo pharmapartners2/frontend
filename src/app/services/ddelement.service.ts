@@ -3,7 +3,6 @@ import {HttpClient} from "@angular/common/http";
 import {TokenService} from "./token.service";
 import {environment} from "../../environments/environment";
 import {ddElement} from "../models/physicalExam.model";
-import {Appointment} from "../models/appointment.model";
 
 @Injectable({
   providedIn: 'root'

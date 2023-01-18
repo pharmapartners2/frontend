@@ -1,0 +1,41 @@
+
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <form [formGroup]="medicatieForm">
+          <h5 style="margin-top:20px;">Medicatie:</h5>
+          <div class="mb-3">
+            <input type="hidden" formControlName="patientId" [ngModel]="patientId">
+          </div>
+
+          <div class="form-outline mb-4">
+            <label class="form-label" formControlName="datum">Datum:</label>
+            <input type="date" for="datum" class="form-control" formControlName="datum">
+          </div>
+
+          <div class="form-outline mb-4">
+            <label class="form-label" formControlName="beschrijving">Beschrijving:</label>
+            <input type="text" for="beschrijving" class="form-control" formControlName="beschrijving">
+          </div>
+
+          <div class="form-outline mb-4">
+            <label class="form-label">BP code:</label>
+            <input type="number" for="bpCode" class="form-control" formControlName="bpCode">
+          </div>
+        </form>
+
+        <button type="submit" class="btn btn-primary btn-block mb-4" (click)="registerMedication()">Register Medication
+        </button>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<div class="mb-2">
+  <button class="btn btn-primary btn-block mb-4" (click)="open(content)"><i class="fa fa-fw fa-plus"></i> Voeg Medicatie toe </button>
+</div>
