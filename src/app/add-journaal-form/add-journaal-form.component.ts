@@ -11,6 +11,8 @@ import {Logging} from "../models/logging.model";
 import {LoggingService} from "../services/logging.service";
 import {TokenService} from "../services/token.service";
 import {IcpcCodeService} from "../services/icpcCode.service";
+// @ts-ignore
+import * as bs from 'bootstrap-select'
 
 @Component({
   selector: 'app-add-journaal-form',

@@ -32,8 +32,9 @@
                            placeholder="Datum"/>
                   </div>
                   <div class="row mb-1">
-                    <input formControlName='code' id="{{episodeIndex}}" type="number" class="form-control"
-                           placeholder="ICPC Code"/>
+                    <select class="form-control selectpicker" data-live-search formControlName="code">
+                      <option *ngFor="let icpcCode of icpcCodes" [ngValue]="icpcCode.id">{{icpcCode.icpomschrijving}}</option>
+                    </select>
                   </div>
                 </div>
 
@@ -78,4 +79,3 @@
 <div class="mb-2">
   <button class="btn btn-primary" (click)="open(content)"> Voeg episode toe</button>
 </div>
-
