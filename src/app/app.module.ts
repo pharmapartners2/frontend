@@ -13,7 +13,7 @@ import { RegisterComponent } from './register/register.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AuthService} from "./services/auth.service";
 import {TokenService} from "./services/token.service";
 import {PatientService} from "./services/patient.service";
@@ -23,7 +23,6 @@ import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
 import { AddEpisodeComponent } from './episode/add-episode/add-episode.component';
 import { AddPhysicalExamFormComponent } from './add-physical-exam-form/add-physical-exam-form.component';
 import { SearchDdelementComponent } from './search-ddelement/search-ddelement.component';
-
 
 @NgModule({
   declarations: [
@@ -37,7 +36,7 @@ import { SearchDdelementComponent } from './search-ddelement/search-ddelement.co
     NavbarComponent,
     FooterComponent,
     AddJournaalFormComponent,
-    AddEpisodeComponent,
+    EpisodeDetailComponent,
     AddPhysicalExamFormComponent,
     SearchDdelementComponent,
   ],
@@ -50,7 +49,11 @@ import { SearchDdelementComponent } from './search-ddelement/search-ddelement.co
     ReactiveFormsModule,
   ],
   providers: [DatePipe, AuthService, TokenService, PatientService, MedicationService, { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
-    JwtHelperService],
-  bootstrap: [AppComponent]
+    JwtHelperService, {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenService,
+      multi: true
+    }],
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

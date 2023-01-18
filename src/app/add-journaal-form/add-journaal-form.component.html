@@ -4,51 +4,78 @@
     <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
   </div>
   <div class="modal-body">
-    <form [formGroup]="journaalForm">
+    <form [formGroup]="episodeForm">
       <div class="mb-3">
-        <label class="form-label">Patient:</label>
-        <select class="form-select" formControlName="selectedPatientId">
-          <option *ngFor="let patient of patients" [ngValue]="patient.id"> {{patient.naam}} </option>
-        </select>
+        <input type="hidden" formControlName="selectedPatientId" [ngModel]="patientId">
       </div>
       <div class="container-fluid">
         <div class="row">
-          <button class="btn btn-primary mb-2" (click)="addRegel()">Voeg regel toe</button>
+          <button class="btn btn-primary mb-2" (click)="addEpisode()">Voeg episode toe</button>
         </div>
 
-        <div formArrayName="regels">
-          <div *ngFor="let regel of regels.controls; let i = index">
-            <div [formGroupName]="i">
-              <div class="card">
+        <div formArrayName="episodes">
+          <div *ngFor="let episode of episodes().controls; let episodeIndex = index">
+            <div class="card mb-4 shadow p-3 bg-body rounded">
+              <div [formGroupName]="episodeIndex">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                  Episode
+                  <button class="btn btn-primary btn-sm" type="submit" (click)="removeEpisode(episodeIndex) ">Remove
+                  </button>
+                </div>
                 <div class="card-body m-2">
                   <div class="row mb-1">
-                    <input formControlName="beschrijving" id="{{i}}" type="text" class="form-control" placeholder="Beschrijving van episode"/>
+                    <input formControlName="beschrijving" id="{{episodeIndex}}" type="text" class="form-control"
+                           placeholder="Beschrijving van episode"/>
                   </div>
                   <div class="row mb-1">
-                    <input formControlName='datum' id="{{i}}" type="date" class="form-control" placeholder="Datum"/>
+                    <input formControlName='datum' id="{{episodeIndex}}" type="date" class="form-control"
+                           placeholder="Datum"/>
                   </div>
-
                   <div class="row mb-1">
-                    <input formControlName='code' id="{{i}}" type="number" class="form-control" placeholder="Code"/>
-                  </div>
-
-                  <div class="row mb-1">
-                    <button class="btn btn-primary" type="submit" (click)="removeRegel(i) ">Remove</button>
+                    <input formControlName='code' id="{{episodeIndex}}" type="number" class="form-control"
+                           placeholder="ICPC Code"/>
                   </div>
                 </div>
 
+                <button class="btn btn-primary m-2" (click)="addEpisodeRegel(episodeIndex)">Voeg regel toe</button>
+                <div formArrayName="regels">
+                  <div *ngFor="let regel of episodeRegels(episodeIndex).controls; let regelIndex = index">
+                    <div [formGroupName]="regelIndex">
+                      <div class="card m-2">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                          Journaalregel
+                          <button class="btn btn-primary btn-sm" type="submit"
+                                  (click)="removeRegel(episodeIndex, regelIndex) ">
+                            Remove
+                          </button>
+                        </div>
+                        <div class="card-body m-2">
+                          <div class="row mb-1">
+                            <input formControlName="beschrijving" type="text" class="form-control"
+                                   placeholder="Beschrijving van episode"/>
+                          </div>
+                          <div class="row mb-1">
+                            <input formControlName='datum' type="date" class="form-control" placeholder="Datum"/>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-
     </form>
   </div>
   <div class="modal-footer">
-    <button class="btn btn-primary" [disabled]="!journaalForm.valid" (click)="submitForm()">Voeg
+    <button class="btn btn-primary" [disabled]="!episodeForm.valid" (click)="submitForm()">Voeg
       episode toe
     </button>
   </div>
 </ng-template>
-<button class="btn btn-primary" (click)="open(content)"> Voeg episode toe</button>
+<div class="mb-2">
+  <button class="btn btn-primary" (click)="open(content)"> Voeg episode toe</button>
+</div>
+

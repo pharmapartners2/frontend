@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule} from '@angular/router';
 
 import { LoginComponent } from './login/login.component';
 import { OverviewComponent } from './overview/overview.component';
@@ -7,9 +7,6 @@ import { PatientDetailComponent } from './patient-detail/patient-detail.componen
 import { PatientListComponent } from './patient-list/patient-list.component';
 import { VisiteBriefjeComponent } from './visite-briefje/visite-briefje.component';
 import { RegisterComponent } from './register/register.component';
-import { AddEpisodeComponent } from './episode/add-episode/add-episode.component';
-
-const routes: Routes = [];
 
 @NgModule({
   imports: [
@@ -19,8 +16,7 @@ const routes: Routes = [];
       { path: 'patientslist', component: PatientListComponent },
       { path: 'visitebriefje/:patientId', component: VisiteBriefjeComponent },
       { path: 'register', component: RegisterComponent },
-      { path: 'login', component: LoginComponent },
-      { path: 'episode', component: AddEpisodeComponent}
+      { path: 'login', component: LoginComponent }
     ])],
 
   exports: [RouterModule]

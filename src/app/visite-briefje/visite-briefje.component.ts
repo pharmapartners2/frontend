@@ -10,9 +10,13 @@ import { MedicationPrescription } from "../models/medicationprescription.model";
 import { PhysicalExam } from '../models/physicalExam.model';
 import { PhysicalExamService } from '../services/physicalExam.service';
 import { Intolerantie } from '../models/intolerantie.model';
-import { Journal } from '../models/journal.model';
+import { EpisodeRegel } from '../models/EpisodeRegel.model';
 import { JournalService } from '../services/journal.service';
 import { IntolerantieService } from '../services/intolerantie.service';
+import {Logging} from "../models/logging.model";
+import {LoggingService} from "../services/logging.service";
+import {TokenService} from "../services/token.service";
+import {NgbModal, NgbModalConfig} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-visite-briefje',
@@ -24,7 +28,7 @@ export class VisiteBriefjeComponent implements OnInit {
   private _episode: Episode[];
   private _physicalExam: PhysicalExam[];
   private _medicationPrescriptions: MedicationPrescription[];
-  private _journal: Journal[];
+  private _journal: EpisodeRegel[];
   private _intolerantie: Intolerantie[];
   currentDateTime: string | null;
 
@@ -36,7 +40,7 @@ export class VisiteBriefjeComponent implements OnInit {
     private episodeService: EpisodeService,
     private journalService: JournalService,
     private intolerantieService: IntolerantieService,
-    private physicalExamService: PhysicalExamService) {
+    private physicalExamService: PhysicalExamService, private loggingService: LoggingService, private tokenService: TokenService) {
       this.currentDateTime = this.datepipe.transform(new Date(), 'dd-MM-yyyy');
   }
 
@@ -48,6 +52,11 @@ export class VisiteBriefjeComponent implements OnInit {
     .subscribe(response => {
       this._journal = response;
       console.log("Patient: ", response)
+      let currentDate = new Date();
+      this.loggingService.registerLogging(new Logging(this.tokenService.getIdfromToken(), "Gebruiker " + this.tokenService.getIdfromToken().toString() + " heeft dossier geopend van patient met id: " + idFromRoute, currentDate ))
+        .subscribe(response => {
+          console.log("logged login", response);
+        });
     });
 
     this.intolerantieService.getIntolerantie(idFromRoute)
@@ -103,8 +112,7 @@ export class VisiteBriefjeComponent implements OnInit {
     return this._intolerantie;
   }
 
-  get journal(): Journal[] {
+  get journal(): EpisodeRegel[] {
     return this._journal;
   }
-
 }

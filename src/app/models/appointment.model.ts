@@ -17,7 +17,7 @@ export class Appointment {
     this._patientModel=patient;
   }
 
-  get userid() : number {
+  get userId() : number {
     return this._userId;
   }
   get patientid() : number {
