@@ -18,9 +18,9 @@
               <div *ngIf="loginForm.controls.username.hasError('pattern')">
                 Gebruikersnaam is ongeldig.
               </div>
+
             </div>
           </div>
-
           <!-- Password input -->
           <div class="mb-4">
             <label class="form-label" formControlName="password">Wachtwoord: </label>
@@ -33,12 +33,12 @@
               <div *ngIf="loginForm.controls.password.hasError('minlength')">
                 Wachtwoord is minimaal 4 karakters lang.
               </div>
+
             </div>
             <div *ngIf="submitted && err" class="error">
               {{ err }}
             </div>
           </div>
-
           <!-- Submit button -->
           <button type="submit" class="btn btn-primary btn-block mb-4" (click)="LogIn()">
             Sign in
