@@ -16,6 +16,7 @@ import { IntolerantieService } from '../services/intolerantie.service';
 import {Logging} from "../models/logging.model";
 import {LoggingService} from "../services/logging.service";
 import {TokenService} from "../services/token.service";
+import {NgbModal, NgbModalConfig} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-visite-briefje',
@@ -114,5 +115,4 @@ export class VisiteBriefjeComponent implements OnInit {
   get journal(): EpisodeRegel[] {
     return this._journal;
   }
-
 }

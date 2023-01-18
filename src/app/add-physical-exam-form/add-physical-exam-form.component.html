@@ -1,0 +1,50 @@
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Voeg een lichamelijk onderzoek toe</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="physicalExamForm">
+      <div class="mb-3">
+        <label type="text" class="form-label">
+          Datum:
+        </label>
+        <input type="date" formControlName="datum" class="form-control">
+      </div>
+      <div class="mb-3">
+        <label class="form-label" type="number">
+          Waarde van de eenheid:</label>
+        <input type="text" formControlName="waarde" class="form-control" class="form-control">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">DDElement:</label>
+        <app-search-ddelement (searchTextChanged)="onSearchTextChanged($event)"></app-search-ddelement>
+        <div style="overflow-y: scroll; height:400px; width: auto">
+          <ng-container *ngFor="let ddelement of ddelements; let i = index;">
+            <div *ngIf="searchText === '' || ddelement.naam.toLowerCase().includes(searchText)">
+
+              <ul class="list-group">
+                <li class="list-group-item list-group-item-action" [class.active]="active === i"
+                    (click)="onClick(i, ddelement.id)" [value]="ddelement.id"> {{ddelement.naam }} </li>
+              </ul>
+            </div>
+
+          </ng-container>
+        </div>
+      </div>
+
+      <div *ngIf="submitted && err" class="error">
+        {{ err }}
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-block mb-4" (click)="submitForm()">
+        Voeg toe
+      </button>
+    </form>
+  </div>
+  <div class="modal-footer">
+  </div>
+</ng-template>
+<button class="btn btn-primary btn-block mb-4" (click)="open(content)"><i class="fa fa-fw fa-plus"></i> Voeg een
+  lichamelijk onderzoek toe
+</button>

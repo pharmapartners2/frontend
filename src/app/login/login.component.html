@@ -1,46 +1,50 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-4">
-      <form [formGroup]="loginForm">
-        <h5>Inloggen</h5>
-        <!-- Username input -->
-        <div class="form-outline mb-4">
-          <label class="form-label" for="username">Gebruikersnaam: </label>
-          <input type="text" for="username" class="form-control" formControlName="username"
-            [ngClass]="{'is-invalid':submitted} && loginForm.controls.username.errors">
-          <div *ngIf="submitted && loginForm.controls.username.errors" class="error">
-            <div *ngIf="loginForm.controls.username.hasError('required')">
-              Gebruikersnaam is verplicht.
-            </div>
-            <div *ngIf="loginForm.controls.username.hasError('pattern')">
-              Gebruikersnaam is ongeldig.
+    <div class="card w-50 shadow p-3 mb-5 bg-body-tertiary rounded loginForm">
+      <div class="card-body">
+        <form [formGroup]="loginForm">
+          <div class="card-title">
+            <h5>Inloggen</h5>
+          </div>
+          <!-- Username input -->
+          <div class="mb-4">
+            <label class="form-label" formControlName="username">Gebruikersnaam: </label>
+            <input type="text" class="form-control" formControlName="username"
+                   [ngClass]="{'is-invalid':submitted} && loginForm.controls.username.errors">
+            <div *ngIf="submitted && loginForm.controls.username.errors" class="error">
+              <div *ngIf="loginForm.controls.username.hasError('required')">
+                Gebruikersnaam is verplicht.
+              </div>
+              <div *ngIf="loginForm.controls.username.hasError('pattern')">
+                Gebruikersnaam is ongeldig.
+              </div>
             </div>
           </div>
-        </div>
 
-        <!-- Password input -->
-        <div class="form-outline mb-4">
-          <label class="form-label" for="password">Wachtwoord: </label>
-          <input type="password" for="password" class="form-control" formControlName="password"
-            [ngClass]="{'is-invalid':submitted} && loginForm.controls.password.errors">
-          <div *ngIf="submitted && loginForm.controls.password.errors" class="error">
-            <div *ngIf="loginForm.controls.password.hasError('required')">
-              Wachtwoord is verplicht.
+          <!-- Password input -->
+          <div class="mb-4">
+            <label class="form-label" formControlName="password">Wachtwoord: </label>
+            <input type="password"  class="form-control" formControlName="password"
+                   [ngClass]="{'is-invalid':submitted} && loginForm.controls.password.errors">
+            <div *ngIf="submitted && loginForm.controls.password.errors" class="error">
+              <div *ngIf="loginForm.controls.password.hasError('required')">
+                Wachtwoord is verplicht.
+              </div>
+              <div *ngIf="loginForm.controls.password.hasError('minlength')">
+                Wachtwoord is minimaal 4 karakters lang.
+              </div>
             </div>
-            <div *ngIf="loginForm.controls.password.hasError('minlength')">
-              Wachtwoord is minimaal 4 karakters lang.
+            <div *ngIf="submitted && err" class="error">
+              {{ err }}
             </div>
           </div>
-          <div *ngIf="submitted && err" class="error">
-              {{ err }} 
-          </div>
-        </div>
-        
-        <!-- Submit button -->
-        <button type="submit" class="btn btn-primary btn-block mb-4" (click)="LogIn()">
-          Inloggen
-        </button>
-      </form>
+
+          <!-- Submit button -->
+          <button type="submit" class="btn btn-primary btn-block mb-4" (click)="LogIn()">
+            Log in
+          </button>
+        </form>
+      </div>
     </div>
   </div>
 </div>

@@ -1,4 +1,4 @@
-import {Component, OnInit, OnChanges, AfterViewInit, SimpleChanges} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { AppointmentService } from '../services/appointment.service';
 import { Patient } from '../models/patient.model';
@@ -9,6 +9,8 @@ import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { Appointment } from '../models/appointment.model';
 import { PatientService } from '../services/patient.service';
+import {FooterService} from "../services/footer.service";
+import {NavbarService} from "../services/navbar.service";
 
 @Component({
   selector: 'app-overview',
@@ -37,6 +39,7 @@ export class OverviewComponent implements OnInit {
     private router: Router,
     private authService: AuthService,
     private patientService: PatientService
+
   ) {
     this.currentDateTime = this.datepipe.transform(new Date(), 'dd-MM-yyyy');
     this._appointments = Array<Appointment>();
@@ -48,10 +51,6 @@ export class OverviewComponent implements OnInit {
     this._appointmentsByUserFiltered = Array<Appointment>();
   }
   ngOnInit(): void {
-    if (!this.tokenService.isValidToken()) {
-      this.authService.logout();
-      this.router.navigate(['/login']);
-    }
     this.patientService.getPatients().subscribe((response) => {
       this._patients = response;
       console.log('Patiënten opgehaald: ', response);

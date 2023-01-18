@@ -1,7 +1,7 @@
-<div class="navbar">
+<div *ngIf="navbarService.visible" class="navbar">
   <div class="container-fluid">
     <div class="mx-auto">
-        <div class="navbar" *ngIf="ifToken; else showLogout">        
+        <div class="navbar" *ngIf="ifToken; else showLogout">
             <a [routerLink]="['/login']">
               <h1>
                 <i class="fa fa-fw fa-user"> </i>
@@ -14,11 +14,11 @@
             <a [routerLink]="['/']">
               <h1>Overzicht</h1>
             </a>
-            
+
             <a [routerLink]="['/patientslist']">
               <h1>Patiëntenlijst</h1>
             </a>
-            
+
             <a (click)="logout()">
               <h1>
                 <i class="fa fa-fw fa-user"> </i>
