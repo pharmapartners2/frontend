@@ -24,6 +24,7 @@ import { AddPhysicalExamFormComponent } from './add-physical-exam-form/add-physi
 import { SearchDdelementComponent } from './search-ddelement/search-ddelement.component';
 import {EpisodeDetailComponent} from "./episode-detail/episode-detail.component";
 import {MedicatieToevoegenComponent} from "./medicatie/medicatie-toevoegen/medicatie-toevoegen.component";
+import { SearchBpcodeComponent } from './search-bpcode/search-bpcode.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import {MedicatieToevoegenComponent} from "./medicatie/medicatie-toevoegen/medic
     EpisodeDetailComponent,
     AddPhysicalExamFormComponent,
     SearchDdelementComponent,
-    MedicatieToevoegenComponent
+    MedicatieToevoegenComponent,
+    SearchBpcodeComponent
   ],
   imports: [
     BrowserModule,

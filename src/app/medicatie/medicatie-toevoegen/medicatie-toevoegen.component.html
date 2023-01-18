@@ -25,11 +25,21 @@
 
           <div class="form-outline mb-4">
             <label class="form-label">BP code:</label>
-            <input type="number" for="bpCode" class="form-control" formControlName="bpCode">
+            <app-search-bpcode (searchTextChanged)="onSearchTextChanged($event)"></app-search-bpcode>
+            <div style="overflow-y: scroll; height:400px; width: auto">
+              <ng-container *ngFor="let medication of medications; let i = index;">
+                <div *ngIf="searchText === '' || medication.bpNaam.toLowerCase().includes(searchText)">
+                  <ul class="list-group">
+                    <li class="list-group-item list-group-item-action" [class.active]="active === i"
+                        (click)="onClick(i, medication.id)" [value]="medication.id"> {{medication.bpNaam }} </li>
+                  </ul>
+                </div>
+              </ng-container>
+            </div>
           </div>
         </form>
 
-        <button type="submit" class="btn btn-primary btn-block mb-4" (click)="registerMedication()">Register Medication
+        <button type="submit" class="btn btn-primary btn-block mb-4" (click)="submitForm()">Register Medication
         </button>
       </div>
     </div>

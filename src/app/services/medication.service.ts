@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {TokenService} from "./token.service";
-import {MedicationPrescription, postMedicationPrescription} from "../models/medicationprescription.model";
+import {Medication, MedicationPrescription, postMedicationPrescription} from "../models/medicationprescription.model";
 import {environment} from "../../environments/environment";
 
 @Injectable()
@@ -12,6 +12,10 @@ export class MedicationService {
 
   getMedication(id: number) {
     return this.http.get<Array<MedicationPrescription>>(environment.api + 'medicationprescription/' + id, {headers: {'Authorization': `Bearer ${this.tokenService.getToken()}`}});
+  }
+
+  getMedications() {
+    return this.http.get<Array<Medication>>(environment.api + 'medications', {headers: {'Authorization': `Bearer ${this.tokenService.getToken()}`}});
   }
 
   registerMedication(patientId: number, datum: String, bpCode: number, beschrijving: String) {
